@@ -1,0 +1,36 @@
+.header {
+  height: 9rem;
+  background-color: var(--color-primary-light);
+  padding: 0 3.2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  /* border: 1px solid var(--color-secondary);
+  padding: 0.5rem 0.8rem; */
+}
+
+.logo-link {
+  font-size: 3rem;
+  color: var(--color-secondary);
+  text-decoration: none;
+}
+
+.navigation {
+  display: flex;
+  gap: 2.4rem;
+  list-style: none;
+}
+
+.nav-link {
+  font-size: 1.6rem;
+  color: var(--color-slate-lightest);
+  text-decoration: none;
+  transition: 300ms;
+}
+
+.nav-link:hover {
+  color: var(--color-secondary);
+}

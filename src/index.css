@@ -61,6 +61,7 @@ Medium: 11px
   --color-primary-light: #112240;
   --color-primary-lightest: #233554;
   --color-secondary: #64ffda;
+  --color-secondary-light: rgba(100, 255, 219, 0.13);
   --color-slate-light: #a8b2d1;
   --color-slate-lightest: #ccd6f6;
   --box-shadow: 0 2rem 3rem -1.5rem rgb(17, 34, 64);
@@ -85,4 +86,10 @@ strong {
 *:focus {
   outline: none;
   box-shadow: 0 0 0 0.8rem rgba(100, 255, 219, 0.493);
+}
+
+.container {
+  max-width: 114rem;
+  margin: 0 auto;
+  padding: 0 3.2rem;
 }

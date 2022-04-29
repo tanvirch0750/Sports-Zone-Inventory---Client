@@ -1,1 +1,18 @@
+/* reusble btn */
+.btn {
+  font-size: 1.6rem;
+  text-decoration: none;
+  color: var(--color-secondary);
+  font-weight: 400;
+  border: 1px solid var(--color-secondary);
+  padding: 1.6rem 3.2rem;
+  transition: 300ms;
+}
 
+.btn:hover {
+  background-color: var(--color-secondary-light);
+}
+
+.btn-sm {
+  padding: 1.2rem 2.4rem;
+}
