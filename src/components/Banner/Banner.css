@@ -19,7 +19,7 @@
 }
 
 .banner p {
-  font-size: 1.8rem;
+  font-size: 1.6rem;
   color: var(--color-secondary);
   margin-bottom: 1.2rem;
 }
@@ -31,7 +31,7 @@
   color: var(--color-slate-lightest);
   text-transform: none;
   letter-spacing: 0.05px;
-  margin-bottom: 2.4rem;
+  margin-bottom: 3rem;
 }
 
 .banner h1 span {
