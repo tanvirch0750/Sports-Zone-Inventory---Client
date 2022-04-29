@@ -1,0 +1,40 @@
+.banner {
+  min-height: calc(100vh - 9rem);
+  background-image: linear-gradient(
+      rgba(10, 25, 47, 0.97),
+      rgba(10, 25, 47, 0.97)
+    ),
+    url("../../images/banner/sebg2.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.banner {
+  /* text-align: center; */
+}
+
+.banner p {
+  font-size: 1.8rem;
+  color: var(--color-secondary);
+  margin-bottom: 1.2rem;
+}
+
+.banner h1 {
+  font-size: 6.6rem;
+  line-height: 1.1;
+  font-weight: 500;
+  color: var(--color-slate-lightest);
+  text-transform: none;
+  letter-spacing: 0.05px;
+  margin-bottom: 2.4rem;
+}
+
+.banner h1 span {
+  color: var(--color-secondary);
+  font-size: 3.6rem;
+}
