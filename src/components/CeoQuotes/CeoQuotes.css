@@ -1,0 +1,75 @@
+.ceo-quotes {
+  border-top: 1px solid rgba(100, 255, 219, 0.219);
+  padding: 9.6rem 0;
+}
+
+.ceo-quotes h2 {
+  margin-bottom: 6.4rem;
+}
+
+.quotes-details {
+  display: grid;
+  grid-template-columns: 55fr 45fr;
+  grid-gap: 2.4rem;
+  align-items: center;
+}
+
+.quotes-details blockquote {
+  font-size: 1.8rem;
+  line-height: 1.6;
+  margin-bottom: 2.4rem;
+  position: relative;
+  z-index: 2;
+}
+
+.quotes-details blockquote::before {
+  content: "\201C";
+  position: absolute;
+  top: -6.75rem;
+  left: -3rem;
+  font-size: 24rem;
+  line-height: 1;
+  font-family: sans-serif;
+  color: rgba(168, 178, 209, 0.151);
+  z-index: 1;
+}
+
+.quotes-details p {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.quotes-details .ceo-name {
+  font-size: 1.8rem;
+  color: var(--color-slate-lightest);
+}
+
+.quotes-details .designation {
+  color: var(--color-secondary);
+  font-size: 1.4rem;
+}
+
+.quotes-details .designation span {
+  color: var(--color-slate-light);
+}
+
+.quotes-details .img-box {
+  position: relative;
+  z-index: 2;
+}
+
+.quotes-details .img-box::before {
+  content: "";
+  width: 100%;
+  height: 100%;
+  background-color: var(--color-secondary);
+  position: absolute;
+  left: 10px;
+  top: 10px;
+  z-index: -1;
+}
+
+.quotes-details .img-box img {
+  width: 100%;
+}
