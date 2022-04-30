@@ -5,6 +5,7 @@
       rgba(10, 25, 47, 0.97)
     ),
     url("../../images/banner/sebg2.jpg");
+
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -12,10 +13,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-}
-
-.banner {
-  /* text-align: center; */
 }
 
 .banner p {
@@ -34,7 +31,6 @@
   margin-bottom: 3rem;
 }
 
-.banner h1 span {
-  color: var(--color-secondary);
-  font-size: 3.6rem;
+.banner button {
+  margin-top: 3.6rem;
 }

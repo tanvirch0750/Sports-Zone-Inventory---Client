@@ -93,3 +93,29 @@ strong {
   margin: 0 auto;
   padding: 0 3.2rem;
 }
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: var(--color-slate-lightest);
+}
+
+h2 {
+  font-size: 3rem;
+  font-weight: 500;
+  margin-bottom: 3.2rem;
+  position: relative;
+}
+
+h2::after {
+  content: "";
+  width: 20rem;
+  height: 1px;
+  background-color: var(--color-secondary);
+  position: absolute;
+  top: 16px;
+  left: 272px;
+}
