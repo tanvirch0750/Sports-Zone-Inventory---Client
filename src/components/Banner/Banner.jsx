@@ -11,7 +11,9 @@ const Banner = () => {
           business.
         </h1>
 
-        <p>We solve your inventory problem best possible way!</p>
+        <p className="banner-text">
+          We solve your inventory problem best possible way!
+        </p>
         <button className="btn btn-lg">Manage Inventory</button>
       </div>
     </section>

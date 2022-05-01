@@ -1,12 +1,14 @@
 import React from "react";
 import ceoImg from "../../images/banner/ceo.jpg";
 import "./CeoQuotes.css";
-
 const CeoQuotes = () => {
   return (
     <section className="ceo-quotes">
       <div className="container ceo-quotes-inner">
-        <h2>What our ceo says</h2>
+        <div className="heading">
+          <p>Thoughts from our ceo</p>
+          <h2>What our ceo says</h2>
+        </div>
         <div className="quotes-details">
           <figure>
             <blockquote>

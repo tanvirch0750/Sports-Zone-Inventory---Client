@@ -48,7 +48,8 @@ box-shadow 1: 0 2rem 3rem -1.5rem rgb(17, 34, 64);
 Default: 9px
 Medium: 11px
 */
-@import url("https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700&display=swap");
+/* @import url("https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700&display=swap"); */
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap");
 
 * {
   margin: 0;
@@ -72,7 +73,7 @@ html {
 }
 
 body {
-  font-family: "Rubik", sans-serif;
+  font-family: "Inter", sans-serif;
   line-height: 1;
   font-weight: 400;
   color: var(--color-slate-light);
@@ -101,13 +102,18 @@ h4,
 h5,
 h6 {
   color: var(--color-slate-lightest);
+  font-weight: 500;
+}
+
+p {
+  line-height: 1.6;
+  margin-bottom: 1.6rem;
 }
 
 h2 {
-  font-size: 3rem;
-  font-weight: 500;
-  margin-bottom: 3.2rem;
+  font-size: 3.6rem;
   position: relative;
+  display: inline-block;
 }
 
 h2::after {
@@ -116,6 +122,11 @@ h2::after {
   height: 1px;
   background-color: var(--color-secondary);
   position: absolute;
-  top: 16px;
-  left: 272px;
+  top: 21px;
+  right: -215px;
+}
+
+h3 {
+  font-size: 2.4rem;
+  margin-bottom: 3.2rem;
 }

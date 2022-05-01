@@ -9,6 +9,7 @@
   transition: 300ms;
   background-color: transparent;
   cursor: pointer;
+  letter-spacing: 1px;
 }
 
 .btn:hover {
@@ -20,6 +21,16 @@
 }
 
 .btn-lg {
-  font-size: 1.8rem;
   padding: 1.2rem 3.2ren;
+}
+
+.heading {
+  margin-bottom: 12rem;
+}
+
+.heading p {
+  color: var(--color-secondary);
+  font-size: 1.6rem;
+  margin-bottom: 0.5rem;
+  opacity: 0.9;
 }
