@@ -1,0 +1,74 @@
+.signup {
+  padding: 9.6rem 0;
+}
+
+.form-container {
+  max-width: 70rem;
+  margin: 0 auto;
+  background-color: var(--color-primary-light);
+  padding: 4.8rem;
+}
+
+.form-container h2 {
+  display: block;
+  text-align: center !important;
+  margin-bottom: 4.8rem;
+}
+
+.form-container h2::after {
+  display: none;
+}
+
+/* .signup form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 2.4rem;
+} */
+
+.form-control {
+  margin-bottom: 2.6rem;
+}
+
+.form-control input,
+.form-control select {
+  width: 100%;
+  border: none;
+  padding: 2rem 2rem;
+  background-color: var(--color-primary);
+  font-size: 1.6rem;
+  color: var(--color-slate-light);
+  margin-top: 1.2rem;
+}
+
+.form-control label {
+  font-size: 1.6rem;
+  color: var(--color-slate-light);
+}
+
+.form-control .error-message {
+  font-size: 1.4rem;
+  margin-top: 0.5rem;
+  padding: 0 2rem;
+  color: #df3a08;
+}
+
+.form-control input:focus,
+.form-control select:focus {
+  outline: none;
+  border: 0.1rem solid var(--color-secondary);
+}
+
+.form-btn {
+  width: 100%;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 30px var(--color-primary) inset !important;
+}
+
+input:-webkit-autofill {
+  -webkit-text-fill-color: var(--color-slate-light) !important;
+}

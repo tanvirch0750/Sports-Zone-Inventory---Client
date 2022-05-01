@@ -84,10 +84,10 @@ strong {
   font-weight: 500;
 }
 
-*:focus {
+/* *:focus {
   outline: none;
-  box-shadow: 0 0 0 0.8rem rgba(100, 255, 219, 0.493);
-}
+  box-shadow: 0 0 0 0.1rem rgba(100, 255, 219, 0.493) !important;
+} */
 
 .container {
   max-width: 114rem;
