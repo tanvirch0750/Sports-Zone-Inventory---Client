@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
+import { Link } from "react-router-dom";
+import "../Form.css";
 import Social from "../Social/Social";
 import "./Login.css";
 
@@ -50,6 +52,12 @@ const Login = () => {
             </div>
             <input type="submit" className="btn form-btn" value="Login" />
           </form>
+          <p className="login-signup-text">
+            Don't have an account?{" "}
+            <Link to="/signup" className="login-signup-link">
+              Sign Up
+            </Link>
+          </p>
           <Social text="Login" />
         </div>
       </div>
