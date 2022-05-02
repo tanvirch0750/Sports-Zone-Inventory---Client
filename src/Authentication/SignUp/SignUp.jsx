@@ -2,6 +2,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import * as Yup from "yup";
+import Social from "../Social/Social";
 import "./SignUp.css";
 
 const SignUp = () => {
@@ -49,7 +50,7 @@ const SignUp = () => {
               />
               <p className="error-message">{errors.name?.message}</p>
             </div>
-            <div className="form-control">
+            {/* <div className="form-control">
               <label htmlFor="store">Your store/business name:</label>
               <input
                 {...register("store", {
@@ -60,7 +61,7 @@ const SignUp = () => {
                 placeholder="Enter your store/buiness name"
               />
               <p className="error-message">{errors.store?.message}</p>
-            </div>
+            </div> */}
             <div className="form-control">
               <label htmlFor="name">Your email:</label>
               <input
@@ -94,7 +95,7 @@ const SignUp = () => {
               />
               <p className="error-message">{errors.confirmPassword?.message}</p>
             </div>
-            <div className="form-control">
+            {/* <div className="form-control">
               <label htmlFor="name">Select one of our warehouse:</label>
               <select
                 {...register("Warehouse", {
@@ -106,9 +107,10 @@ const SignUp = () => {
                 <option value="New York">Hell Kitchen</option>
               </select>
               <p className="error-message">{errors.address?.message}</p>
-            </div>
-            <input type="submit" className="btn form-btn" value="Register" />
+            </div> */}
+            <input type="submit" className="btn form-btn" value="Signup" />
           </form>
+          <Social text="Signup" />
         </div>
       </div>
     </section>

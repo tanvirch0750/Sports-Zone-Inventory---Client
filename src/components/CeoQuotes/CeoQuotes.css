@@ -37,7 +37,6 @@
 .quotes-details p {
   display: flex;
   flex-direction: column;
-  gap: 0.8rem;
 }
 
 .quotes-details .ceo-name {
