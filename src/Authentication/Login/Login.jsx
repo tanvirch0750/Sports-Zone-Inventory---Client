@@ -22,6 +22,7 @@ const Login = () => {
   const {
     register,
     handleSubmit,
+    watch,
     formState: { errors },
   } = useForm({});
   const location = useLocation();
@@ -51,26 +52,32 @@ const Login = () => {
     }
   }, [user, navigate, from]);
 
+  const email = watch("email");
+  function validateEmail() {
+    let validRegex =
+      /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+    if (email.match(validRegex)) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
   const handleResetEmail = async () => {
-    console.log();
-    if (formdata.email) {
-      await sendPasswordResetEmail(formdata.email);
+    if (validateEmail()) {
+      await sendPasswordResetEmail(email);
     }
 
-    console.log(formdata.email);
-    if (!formdata.email) {
-      toast(
-        "Please enter your email. After write your email plese hit enter then click reset button",
-        {
-          position: "top-right",
-          autoClose: 5000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-        }
-      );
+    if (!validateEmail()) {
+      toast("Please enter your valid email.", {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
     } else {
       toast("A password reset link was sent to your email", {
         position: "top-right",
