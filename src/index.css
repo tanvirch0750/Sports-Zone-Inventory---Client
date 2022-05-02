@@ -96,6 +96,23 @@ strong {
   font-weight: 500;
 }
 
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  -webkit-border-radius: 10px;
+  background-color: var(--color-primary-light);
+  border-radius: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+  background: var(--color-primary-lightest);
+}
 /* *:focus {
   outline: none;
   box-shadow: 0 0 0 0.1rem rgba(100, 255, 219, 0.493) !important;
