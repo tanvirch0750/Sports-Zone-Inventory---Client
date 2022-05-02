@@ -66,10 +66,22 @@ Medium: 11px
   --color-slate-light: #a8b2d1;
   --color-slate-lightest: #ccd6f6;
   --box-shadow: 0 2rem 3rem -1.5rem rgb(17, 34, 64);
+
+  --toastify-color-light: #112240;
+  --toastify-color-progress-light: #64ffda;
 }
 
 html {
   font-size: 62.5%;
+}
+
+.Toastify__toast-body {
+  font-size: 1.6rem !important;
+  color: #64ffda;
+  line-height: 1.4;
+}
+.Toastify__close-button {
+  color: #64ffda;
 }
 
 body {

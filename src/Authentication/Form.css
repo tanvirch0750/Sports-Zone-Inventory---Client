@@ -53,6 +53,23 @@
   font-size: 1.6rem;
 }
 
+.forgot-password--text {
+  text-align: center;
+  font-size: 1.6rem;
+  margin-top: 1.6rem;
+}
+
+.forgot-password--text span {
+  color: var(--color-secondary);
+  cursor: pointer;
+  margin-left: 0.5rem;
+  transition: 300ms;
+}
+
+.forgot-password--text span:hover {
+  color: rgba(100, 255, 219, 0.76);
+}
+
 .form-control input:focus,
 .form-control select:focus {
   outline: none;
