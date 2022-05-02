@@ -1,21 +1,39 @@
 import { yupResolver } from "@hookform/resolvers/yup";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useCreateUserWithEmailAndPassword } from "react-firebase-hooks/auth";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import * as Yup from "yup";
+import auth from "../../Firebase/Firebase.init";
 import "../Form.css";
 import Social from "../Social/Social";
 import "./SignUp.css";
 
 const SignUp = () => {
-  const [formData, setFormData] = useState([]);
+  const [customError, setCustomError] = useState("");
+
+  const [createUserWithEmailAndPassword, user, loading, error] =
+    useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true });
+  const location = useLocation();
+  const from = location?.state?.from?.pathname || "/";
+
+  useEffect(() => {
+    if (error) {
+      if (error.message.includes("auth/email-already-in-use")) {
+        setCustomError("Alreary have an account with this email");
+      } else {
+        setCustomError(error.message);
+      }
+    }
+  });
 
   const formSchema = Yup.object().shape({
+    email: Yup.string().email().required("Please Provide a valid email"),
     password: Yup.string()
       .required("Password is mendatory")
       .min(3, "Password must be at 3 char long"),
     confirmPassword: Yup.string()
-      .required("Password is mendatory")
+      .required("Password does not match")
       .oneOf([Yup.ref("password")], "Passwords does not match"),
   });
   const formOptions = { resolver: yupResolver(formSchema) };
@@ -27,31 +45,32 @@ const SignUp = () => {
   } = useForm(formOptions);
 
   const onSubmit = (data) => {
-    setFormData(data);
+    createUserWithEmailAndPassword(data.email, data.password);
   };
-  console.log(formData);
+
+  const navigate = useNavigate();
+  useEffect(() => {
+    if (user) {
+      navigate(from, { replace: true });
+    }
+  }, [user, navigate, from]);
+
   return (
     <section className="signup">
       <div className="container signup-inner">
         <div className="form-container">
           <h2>Registration</h2>
           <form onSubmit={handleSubmit(onSubmit)}>
-            <div className="form-control">
+            {/* <div className="form-control">
               <label htmlFor="name">Your name:</label>
               <input
-                {...register("name", {
-                  required: "Please give your name",
-                  minLength: {
-                    value: 4,
-                    message: "Minimum length is four",
-                  },
-                })}
+                {...register("name")}
                 id="name"
                 type="text"
                 placeholder="Enter your name"
               />
               <p className="error-message">{errors.name?.message}</p>
-            </div>
+            </div> */}
             {/* <div className="form-control">
               <label htmlFor="store">Your store/business name:</label>
               <input
@@ -67,13 +86,7 @@ const SignUp = () => {
             <div className="form-control">
               <label htmlFor="name">Your email:</label>
               <input
-                {...register("email", {
-                  required: "Please provide your email address",
-                  pattern: {
-                    value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
-                    message: "Please provide a valid email address",
-                  },
-                })}
+                {...register("email")}
                 type="email"
                 placeholder="Enter your email"
               />
@@ -110,6 +123,7 @@ const SignUp = () => {
               </select>
               <p className="error-message">{errors.address?.message}</p>
             </div> */}
+            {customError && <p className="error-message">{customError}</p>}
             <input type="submit" className="btn form-btn" value="Signup" />
           </form>
           <p className="login-signup-text">
