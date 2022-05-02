@@ -1,18 +1,40 @@
 import { signOut } from "firebase/auth";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import auth from "../../Firebase/Firebase.init";
 import "./Header.css";
 
 const Header = () => {
   const [user] = useAuthState(auth);
+  const [scrolled, setScrolled] = useState(false);
+  const { pathname } = useLocation();
+
+  const handleScroll = () => {
+    const offset = window.scrollY;
+    if (offset > 200) {
+      setScrolled(true);
+    } else {
+      setScrolled(false);
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+  });
+  let navbarClasses = ["navbar"];
+  if (scrolled) {
+    navbarClasses.push("scrolled");
+  }
 
   const handleSignOut = () => {
     signOut(auth);
   };
+  // navbarClasses.join(" ")
   return (
-    <header className="header">
+    <header
+      className={`${pathname === "/" ? navbarClasses.join(" ") : ""} header`}
+    >
       <div className="logo">
         <Link className="logo-link" to="/">
           Sinventory

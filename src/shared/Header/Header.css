@@ -6,6 +6,7 @@
   justify-content: space-between;
   align-items: center;
   border-bottom: 1px solid rgba(100, 255, 219, 0.219);
+  transition: 300ms ease-in;
 }
 
 .logo {
@@ -34,4 +35,14 @@
 
 .nav-link:hover {
   color: var(--color-secondary);
+}
+
+.scrolled {
+  height: 8rem;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 10000;
+  background-color: rgba(17, 34, 64, 0.973);
 }
