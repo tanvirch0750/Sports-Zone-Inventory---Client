@@ -50,6 +50,7 @@
 
 .error-message {
   color: #df3a08;
+  font-size: 1.6rem;
 }
 
 .form-control input:focus,

@@ -1,23 +1,47 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import auth from "../../Firebase/Firebase.init";
 import "../Form.css";
 import Social from "../Social/Social";
 import "./Login.css";
 
 const Login = () => {
-  const [formData, setFormData] = useState([]);
-
+  const [customError, setCustomError] = useState("");
+  const [signInWithEmailAndPassword, user, loading, error] =
+    useSignInWithEmailAndPassword(auth);
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm({});
+  const location = useLocation();
+  const navigate = useNavigate();
+  const from = location?.state?.from?.pathname || "/";
+
+  useEffect(() => {
+    if (error) {
+      if (error.message.includes("auth/wrong-password")) {
+        setCustomError("Your password is wrong");
+      } else if (error.message.includes("auth/user-not-found")) {
+        setCustomError("Account not found with this email");
+      } else {
+        setCustomError(error.message);
+      }
+    }
+  });
 
   const onSubmit = (data) => {
-    setFormData(data);
+    signInWithEmailAndPassword(data.email, data.password);
   };
-  console.log(formData);
+
+  useEffect(() => {
+    if (user) {
+      navigate(from, { replace: true });
+    }
+  }, [user, navigate, from]);
+
   return (
     <section className="login">
       <div className="container login-inner">
@@ -29,10 +53,6 @@ const Login = () => {
               <input
                 {...register("email", {
                   required: "Please provide your email address",
-                  pattern: {
-                    value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
-                    message: "Please provide a valid email address",
-                  },
                 })}
                 type="email"
                 placeholder="Enter your email"
@@ -50,6 +70,7 @@ const Login = () => {
               />
               <p className="error-message">{errors.password?.message}</p>
             </div>
+            {customError && <p className="error-message">{customError}</p>}
             <input type="submit" className="btn form-btn" value="Login" />
           </form>
           <p className="login-signup-text">
