@@ -48,6 +48,10 @@
   color: #df3a08;
 }
 
+.error-message {
+  color: #df3a08;
+}
+
 .form-control input:focus,
 .form-control select:focus {
   outline: none;
