@@ -8,37 +8,50 @@ import {
 } from "react-icons/io5";
 import "./InventoryItem.css";
 
-const InventoryItem = () => {
+const InventoryItem = ({ item }) => {
+  const {
+    _id,
+    name,
+    image,
+    price,
+    quantity,
+    description,
+    storeName,
+    warehouse,
+    supplier,
+    email,
+  } = item;
+  console.log(item);
   return (
     <div className="inventory-item">
-      <div className="inventory-img">
-        <p className="inventory-desc">
-          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Iure tempora
-          facilis.
-        </p>
+      <div
+        className="inventory-img"
+        style={{ backgroundImage: `url(${image})` }}
+      >
+        <p className="inventory-desc">{description}</p>
       </div>
 
       <div className="inventory-content">
-        <h3>Badminton</h3>
+        <h3>{name}</h3>
         <div className="inventory-store-name">
           <IoHomeOutline className="inventory-icon" />
-          <span>Store: Store name</span>
+          <span>Store: {storeName}</span>
         </div>
         <div className="inventory-warehouse-name">
           <IoCubeOutline className="inventory-icon" />
-          <span>Warehouse: Warehouse name</span>
+          <span>Warehouse: {warehouse}</span>
         </div>
         <div className="inventory-supplier-name">
           <IoEnterOutline className="inventory-icon" />
-          <span>Supplier: Addidas</span>
+          <span>Supplier: {supplier}</span>
         </div>
         <div className="inventory-quantity">
           <IoBarChartOutline className="inventory-icon" />
-          <span>Quantity: 50</span>
+          <span>Quantity: {quantity}</span>
         </div>
         <div className="inventory-price">
           <IoPricetagOutline className="inventory-icon" />
-          <span>Price: $350</span>
+          <span>Price: ${price}</span>
         </div>
         <button className="btn btn-sm">Update</button>
       </div>
