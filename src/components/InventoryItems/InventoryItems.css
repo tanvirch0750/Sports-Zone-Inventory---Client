@@ -13,9 +13,9 @@
 .inventory-items {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-gap: 3.4rem;
+  grid-gap: 6.4rem;
 }
 
 .inventory-item-inner {
-  padding: 0 3.2rem;
+  padding: 0 6.4rem;
 }
