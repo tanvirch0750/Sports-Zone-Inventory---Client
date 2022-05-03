@@ -1,0 +1,55 @@
+.inventory-item {
+  background-color: var(--color-primary-light);
+  padding: 2.2rem;
+
+  display: grid;
+  grid-template-columns: 50fr 50fr;
+  grid-gap: 2.4rem;
+}
+
+.inventory-img {
+  background-image: url(../../images//inventory-items/badminton.jpg);
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+
+.inventory-img img {
+  width: 100%;
+
+  border: 2px solid var(--color-secondary);
+}
+
+.inventory-desc {
+  font-size: 1.6rem;
+  line-height: 1.4;
+  position: absolute;
+  background-color: rgba(10, 25, 47, 0.822);
+  bottom: -16px;
+  padding: 1.2rem;
+}
+
+.inventory-content h3 {
+  background-color: var(--color-primary);
+  text-align: center;
+  padding: 1.6rem 1rem;
+  margin-bottom: 1.6rem;
+  font-size: 2rem;
+}
+
+.inventory-content div {
+  margin-bottom: 1.6rem;
+  font-size: 1.6rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.inventory-content .inventory-icon {
+  color: var(--color-secondary);
+  font-size: 2rem;
+}
+
+.inventory-item button {
+  width: 100%;
+}

@@ -1,0 +1,21 @@
+.inventories {
+  padding: 7.2rem 0;
+}
+
+.inventories .heading {
+  margin-bottom: 6.4rem;
+  text-align: center;
+}
+.inventories .heading h2::after {
+  display: none;
+}
+
+.inventory-items {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 3.4rem;
+}
+
+.inventory-item-inner {
+  padding: 0 3.2rem;
+}
