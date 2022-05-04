@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
+import { useForm } from "react-hook-form";
 import { useParams } from "react-router-dom";
 import auth from "../../Firebase/Firebase.init";
 import "./InventoryItemDetails.css";
@@ -10,6 +11,12 @@ const InventoryItemDetails = () => {
   const [user] = useAuthState(auth);
   console.log(user);
   const { id } = useParams();
+  const {
+    register,
+    handleSubmit,
+    watch,
+    formState: { errors },
+  } = useForm({});
 
   useEffect(() => {
     setLoadData(true);
@@ -21,7 +28,9 @@ const InventoryItemDetails = () => {
       });
   }, []);
 
-  console.log(user.photoURL);
+  const onSubmit = (data) => {
+    console.log(data);
+  };
 
   return (
     <section className="inventory-item-details">
@@ -47,9 +56,9 @@ const InventoryItemDetails = () => {
             <button className="btn">Update Profile</button>
           </div>
         </div>
-        <div className="heading">
+        {/* <div className="heading">
           <h2>Invnetory Item Details</h2>
-        </div>
+        </div> */}
         <div className="item-details">
           <div className="item-details-img-box">
             <img src={inventory.image} alt="invntory img" />
@@ -69,6 +78,28 @@ const InventoryItemDetails = () => {
                 </span>
               </span>
             </div>
+          </div>
+        </div>
+        <div className="inventory-item-operations">
+          <div className="stock-out">
+            <p>Stock Out:</p>
+            <button className="btn">Delivered</button>
+          </div>
+          <div className="stock-in">
+            <p>Stock In:</p>
+            <form onSubmit={handleSubmit(onSubmit)}>
+              <div className="form-control">
+                <input
+                  {...register("number", {
+                    required: "Please provide stock value",
+                  })}
+                  type="number"
+                  placeholder="Enter stock number"
+                />
+                <p className="error-message">{errors.email?.message}</p>
+              </div>
+              <input type="submit" className="btn" value="Restore" />
+            </form>
           </div>
         </div>
       </div>

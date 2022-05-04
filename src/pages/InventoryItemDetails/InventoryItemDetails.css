@@ -1,14 +1,14 @@
 .inventory-item-details {
   padding: 4.2rem 0;
 }
-.inventory-item-details .heading {
+/* .inventory-item-details .heading {
   margin: 4.2rem 0;
   text-align: center;
 }
 
 .inventory-item-details h2::after {
   display: none;
-}
+} */
 
 .items-owner-details {
   max-width: 80rem;
@@ -24,7 +24,7 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  gap: 2rem;
+  gap: 1.4rem;
 }
 
 .owner-deatils-content h4 {
@@ -51,7 +51,7 @@
 
 .item-details {
   max-width: 80rem;
-  margin: 0 auto;
+  margin: 6.4rem auto;
   background-color: var(--color-primary-light);
   padding: 1.6rem;
   display: grid;
@@ -91,4 +91,41 @@
 
 .stock-message {
   color: var(--color-secondary);
+}
+
+.inventory-item-operations {
+  max-width: 80rem;
+  margin: 6.4rem auto;
+  background-color: var(--color-primary-light);
+  padding: 1.6rem;
+  display: grid;
+  grid-template-columns: 40fr 60fr;
+  grid-gap: 3.2rem;
+}
+
+.inventory-item-operations p {
+  font-size: 1.6rem;
+}
+
+.inventory-item-operations form {
+  display: grid;
+  grid-template-columns: 80fr 20fr;
+  align-items: start;
+}
+
+.stock-out button {
+  width: 100%;
+  padding: 2rem 3.2rem;
+}
+
+.inventory-item-operations .form-control {
+  margin: 0;
+}
+.inventory-item-operations .form-control input {
+  margin: 0;
+  border: 1px solid var(--color-secondary);
+}
+
+.inventory-item-operations form .btn {
+  padding: 2rem 3.6rem;
 }
