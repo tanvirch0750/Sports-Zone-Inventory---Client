@@ -7,9 +7,11 @@ import "./InventoryItemDetails.css";
 
 const InventoryItemDetails = () => {
   const [inventory, setInventory] = useState([]);
+  const [quantity, setQuantity] = useState(0);
+  const [disabled, setDisabled] = useState(false);
   const [loadData, setLoadData] = useState(false);
   const [user] = useAuthState(auth);
-  console.log(user);
+
   const { id } = useParams();
   const {
     register,
@@ -24,9 +26,35 @@ const InventoryItemDetails = () => {
       .then((response) => response.json())
       .then((data) => {
         setInventory(data);
+        setQuantity(quantity);
         setLoadData(false);
       });
-  }, []);
+  }, [quantity]);
+
+  const handleDelevered = () => {
+    setDisabled(true);
+    if (inventory.quantity > 0) {
+      fetch(
+        `https://sheltered-dusk-40415.herokuapp.com/inventory/delivered/${id}`,
+        {
+          method: "PUT",
+          headers: {
+            "content-type": "application/json",
+          },
+        }
+      )
+        .then((res) => res.json())
+        .then((data) => {
+          console.log(data);
+          setQuantity(quantity + 1);
+          alert("user updated successfully");
+          setDisabled(false);
+        });
+    } else {
+      alert("There is nothing available in the stock. Please stock in");
+      setDisabled(false);
+    }
+  };
 
   const onSubmit = (data) => {
     console.log(data);
@@ -56,9 +84,6 @@ const InventoryItemDetails = () => {
             <button className="btn">Update Profile</button>
           </div>
         </div>
-        {/* <div className="heading">
-          <h2>Invnetory Item Details</h2>
-        </div> */}
         <div className="item-details">
           <div className="item-details-img-box">
             <img src={inventory.image} alt="invntory img" />
@@ -83,7 +108,13 @@ const InventoryItemDetails = () => {
         <div className="inventory-item-operations">
           <div className="stock-out">
             <p>Stock Out:</p>
-            <button className="btn">Delivered</button>
+            <button
+              disabled={disabled}
+              onClick={handleDelevered}
+              className="btn"
+            >
+              Delivered
+            </button>
           </div>
           <div className="stock-in">
             <p>Stock In:</p>
