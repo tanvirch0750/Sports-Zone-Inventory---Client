@@ -5,6 +5,7 @@ import RequireAuth from "./Authentication/RequireAuth/RequireAuth";
 import SignUp from "./Authentication/SignUp/SignUp";
 import Home from "./pages/Home/Home";
 import ManageInventory from "./pages/ManageInventory/ManageInventory";
+import MyItems from "./pages/MyItems/MyItems";
 import Header from "./shared/Header/Header";
 
 function App() {
@@ -18,6 +19,14 @@ function App() {
           element={
             <RequireAuth>
               <ManageInventory />
+            </RequireAuth>
+          }
+        ></Route>
+        <Route
+          path="/my-items"
+          element={
+            <RequireAuth>
+              <MyItems />
             </RequireAuth>
           }
         ></Route>

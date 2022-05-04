@@ -6,6 +6,7 @@ import {
   IoHomeOutline,
   IoPricetagOutline,
 } from "react-icons/io5";
+import { useLocation } from "react-router-dom";
 import "./InventoryItem.css";
 
 const InventoryItem = ({ item }) => {
@@ -21,7 +22,7 @@ const InventoryItem = ({ item }) => {
     supplier,
     email,
   } = item;
-  console.log(item);
+  const { pathname } = useLocation();
   return (
     <div className="inventory-item">
       <div
@@ -53,7 +54,15 @@ const InventoryItem = ({ item }) => {
           <IoPricetagOutline className="inventory-icon" />
           <span>Price: ${price}</span>
         </div>
-        <button className="btn btn-sm">Update</button>
+        {pathname === "/my-items" ? (
+          <div className="inventory-buttons">
+            {" "}
+            <button className="btn btn-sm">Update</button>{" "}
+            <button className="btn btn-sm">Delete</button>
+          </div>
+        ) : (
+          <button className="btn btn-sm">Update</button>
+        )}
       </div>
     </div>
   );

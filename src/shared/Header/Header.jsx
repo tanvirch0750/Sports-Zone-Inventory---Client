@@ -51,6 +51,13 @@ const Header = () => {
             Manage Inventory
           </Link>
         </li>
+        {user && (
+          <li>
+            <Link className="nav-link" to="/my-items">
+              My Items
+            </Link>
+          </li>
+        )}
         {!user && (
           <li>
             <Link className="nav-link" to="/login">
