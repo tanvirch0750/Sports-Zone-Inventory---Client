@@ -16,7 +16,7 @@ const InventoryItemDetails = () => {
   const {
     register,
     handleSubmit,
-    watch,
+    reset,
     formState: { errors },
   } = useForm({});
 
@@ -72,6 +72,7 @@ const InventoryItemDetails = () => {
         alert("Item delivered successfully");
         setDisabled(false);
       });
+    reset();
   };
 
   return (
