@@ -47,7 +47,7 @@ const InventoryItemDetails = () => {
         .then((data) => {
           console.log(data);
           setQuantity(quantity + 1);
-          alert("user updated successfully");
+          alert("Item delivered successfully");
           setDisabled(false);
         });
     } else {
@@ -58,6 +58,20 @@ const InventoryItemDetails = () => {
 
   const onSubmit = (data) => {
     console.log(data);
+    fetch(`https://sheltered-dusk-40415.herokuapp.com/inventory/stored/${id}`, {
+      method: "PUT",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(data),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        setQuantity(quantity + 1);
+        alert("Item delivered successfully");
+        setDisabled(false);
+      });
   };
 
   return (
