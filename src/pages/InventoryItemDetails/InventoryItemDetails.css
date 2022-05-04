@@ -1,0 +1,94 @@
+.inventory-item-details {
+  padding: 4.2rem 0;
+}
+.inventory-item-details .heading {
+  margin: 4.2rem 0;
+  text-align: center;
+}
+
+.inventory-item-details h2::after {
+  display: none;
+}
+
+.items-owner-details {
+  max-width: 80rem;
+  margin: 0 auto;
+  background-color: var(--color-primary-light);
+  padding: 1.6rem;
+  display: grid;
+  grid-template-columns: 70fr 30fr;
+  grid-gap: 1.2rem;
+}
+
+.owner-deatils-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.owner-deatils-content h4 {
+  margin-bottom: 0;
+  font-size: 1.6rem;
+}
+
+.owner-details-img {
+  margin-left: auto;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.owner-detail-img-box img {
+  width: 10rem;
+}
+
+.owner-details-img button {
+  border: none;
+  padding: 0;
+}
+
+.item-details {
+  max-width: 80rem;
+  margin: 0 auto;
+  background-color: var(--color-primary-light);
+  padding: 1.6rem;
+  display: grid;
+  grid-template-columns: 40fr 60fr;
+  grid-gap: 3.2rem;
+}
+
+.item-details-img-box img {
+  width: 100%;
+}
+
+.item-details-img-box button {
+  width: 100%;
+  margin-top: 1.6rem;
+}
+
+.item-details-content h3 {
+  background-color: var(--color-primary);
+  text-align: center;
+  padding: 1.6rem 1rem;
+  margin-bottom: 2.4rem;
+  font-size: 1.8rem;
+}
+
+.item-details-content p {
+  font-size: 1.6rem;
+  line-height: 1.4;
+}
+
+.item-details-content div {
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+  font-size: 1.5rem;
+  color: var(--color-slate-lightest);
+}
+
+.stock-message {
+  color: var(--color-secondary);
+}
