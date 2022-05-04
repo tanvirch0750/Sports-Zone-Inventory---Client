@@ -6,7 +6,7 @@ import {
   IoHomeOutline,
   IoPricetagOutline,
 } from "react-icons/io5";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import "./InventoryItem.css";
 
 const InventoryItem = ({ item }) => {
@@ -23,6 +23,13 @@ const InventoryItem = ({ item }) => {
     email,
   } = item;
   const { pathname } = useLocation();
+
+  const navigate = useNavigate();
+
+  const handleManageInventory = () => {
+    navigate(`/inventory/${_id}`);
+  };
+
   return (
     <div className="inventory-item">
       <div
@@ -61,7 +68,9 @@ const InventoryItem = ({ item }) => {
             <button className="btn btn-sm">Delete</button>
           </div>
         ) : (
-          <button className="btn btn-sm">Update</button>
+          <button className="btn btn-sm" onClick={handleManageInventory}>
+            Manage Inventory
+          </button>
         )}
       </div>
     </div>

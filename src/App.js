@@ -4,6 +4,7 @@ import Login from "./Authentication/Login/Login";
 import RequireAuth from "./Authentication/RequireAuth/RequireAuth";
 import SignUp from "./Authentication/SignUp/SignUp";
 import Home from "./pages/Home/Home";
+import InventoryItemDetails from "./pages/InventoryItemDetails/InventoryItemDetails";
 import ManageInventory from "./pages/ManageInventory/ManageInventory";
 import MyItems from "./pages/MyItems/MyItems";
 import Header from "./shared/Header/Header";
@@ -27,6 +28,14 @@ function App() {
           element={
             <RequireAuth>
               <MyItems />
+            </RequireAuth>
+          }
+        ></Route>
+        <Route
+          path="/inventory/:id"
+          element={
+            <RequireAuth>
+              <InventoryItemDetails />
             </RequireAuth>
           }
         ></Route>
