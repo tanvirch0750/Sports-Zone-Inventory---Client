@@ -19,3 +19,8 @@
 .inventory-item-inner {
   padding: 0 6.4rem;
 }
+
+.inventories-btn {
+  text-align: center;
+  margin-top: 3.2rem;
+}

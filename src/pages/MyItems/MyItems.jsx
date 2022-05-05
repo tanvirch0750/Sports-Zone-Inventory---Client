@@ -20,6 +20,22 @@ const MyItems = () => {
       });
   }, []);
 
+  const handleDelete = (id) => {
+    const proceed = window.confirm("Are you sure?");
+    if (proceed) {
+      const url = `https://sheltered-dusk-40415.herokuapp.com/inventory/${id}`;
+
+      fetch(url, {
+        method: "DELETE",
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          const remainning = inventory.filter((inv) => inv._id !== id);
+          setInventory(remainning);
+        });
+    }
+  };
+
   return (
     <section className="my-items">
       <div className="my-items-inner">
@@ -28,7 +44,11 @@ const MyItems = () => {
         </div>
         <div className="my-inventory-items">
           {inventory.map((item) => (
-            <InventoryItem key={item._id} item={item} />
+            <InventoryItem
+              key={item._id}
+              item={item}
+              handleDelete={handleDelete}
+            />
           ))}
         </div>
       </div>

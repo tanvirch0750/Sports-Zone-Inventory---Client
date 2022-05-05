@@ -9,7 +9,7 @@ import {
 import { useLocation, useNavigate } from "react-router-dom";
 import "./InventoryItem.css";
 
-const InventoryItem = ({ item }) => {
+const InventoryItem = ({ item, handleDelete }) => {
   const {
     _id,
     name,
@@ -22,8 +22,8 @@ const InventoryItem = ({ item }) => {
     supplier,
     email,
   } = item;
-  const { pathname } = useLocation();
 
+  const { pathname } = useLocation();
   const navigate = useNavigate();
 
   const handleManageInventory = () => {
@@ -64,8 +64,12 @@ const InventoryItem = ({ item }) => {
         {pathname === "/my-items" ? (
           <div className="inventory-buttons">
             {" "}
-            <button className="btn btn-sm">Update</button>{" "}
-            <button className="btn btn-sm">Delete</button>
+            <button onClick={handleManageInventory} className="btn btn-sm">
+              Details
+            </button>{" "}
+            <button onClick={() => handleDelete(_id)} className="btn btn-sm">
+              Delete
+            </button>
           </div>
         ) : (
           <button className="btn btn-sm" onClick={handleManageInventory}>

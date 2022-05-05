@@ -46,11 +46,13 @@ const Header = () => {
             Home
           </Link>
         </li>
-        <li>
-          <Link className="nav-link" to="/manage-inventory">
-            Manage Inventory
-          </Link>
-        </li>
+        {user && (
+          <li>
+            <Link className="nav-link" to="/manage-inventory">
+              Manage Inventory
+            </Link>
+          </li>
+        )}
         {user && (
           <li>
             <Link className="nav-link" to="/my-items">

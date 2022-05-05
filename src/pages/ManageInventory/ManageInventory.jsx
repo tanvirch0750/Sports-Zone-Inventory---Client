@@ -3,7 +3,24 @@ import useInventory from "../../hooks/useInventory";
 import "./ManageInventory.css";
 
 const ManageInventory = () => {
-  const [inventory] = useInventory();
+  const [inventory, loadData, setInventory] = useInventory();
+
+  const handleDelete = (id) => {
+    const proceed = window.confirm("Are you sure?");
+    if (proceed) {
+      const url = `https://sheltered-dusk-40415.herokuapp.com/inventory/${id}`;
+
+      fetch(url, {
+        method: "DELETE",
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          const remainning = inventory.filter((inv) => inv._id !== id);
+          setInventory(remainning);
+        });
+    }
+  };
+
   return (
     <section className="manage-inventory">
       <div className="manage-inventory-inner container">
@@ -34,7 +51,12 @@ const ManageInventory = () => {
                   <td data-lebel="Quantity">{item.quantity}</td>
                   <td data-lebel="Warehouse">{item.warehouse}</td>
                   <td data-lebel="Delete">
-                    <button className="btn table-btn">delete</button>
+                    <button
+                      onClick={() => handleDelete(item._id)}
+                      className="btn table-btn"
+                    >
+                      delete
+                    </button>
                   </td>
                 </tr>
               ))}
