@@ -6,6 +6,7 @@ const AddItem = () => {
   const {
     register,
     handleSubmit,
+    reset,
     watch,
     formState: { errors },
   } = useForm({});
@@ -22,8 +23,8 @@ const AddItem = () => {
     })
       .then((res) => res.json())
       .then((res) => {
-        console.log(res);
         alert("item added successfully");
+        reset();
       });
   };
 
