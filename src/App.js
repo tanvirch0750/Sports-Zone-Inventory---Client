@@ -3,6 +3,7 @@ import "./App.css";
 import Login from "./Authentication/Login/Login";
 import RequireAuth from "./Authentication/RequireAuth/RequireAuth";
 import SignUp from "./Authentication/SignUp/SignUp";
+import AddItem from "./pages/AddItem/AddItem";
 import Home from "./pages/Home/Home";
 import InventoryItemDetails from "./pages/InventoryItemDetails/InventoryItemDetails";
 import ManageInventory from "./pages/ManageInventory/ManageInventory";
@@ -36,6 +37,14 @@ function App() {
           element={
             <RequireAuth>
               <InventoryItemDetails />
+            </RequireAuth>
+          }
+        ></Route>
+        <Route
+          path="/add-item"
+          element={
+            <RequireAuth>
+              <AddItem />
             </RequireAuth>
           }
         ></Route>

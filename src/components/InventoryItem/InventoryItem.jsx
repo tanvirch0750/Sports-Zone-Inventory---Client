@@ -17,7 +17,7 @@ const InventoryItem = ({ item }) => {
     price,
     quantity,
     description,
-    storeName,
+    outlet,
     warehouse,
     supplier,
     email,
@@ -43,7 +43,7 @@ const InventoryItem = ({ item }) => {
         <h3>{name}</h3>
         <div className="inventory-store-name">
           <IoHomeOutline className="inventory-icon" />
-          <span>Store: {storeName}</span>
+          <span>Outlet: {outlet}</span>
         </div>
         <div className="inventory-warehouse-name">
           <IoCubeOutline className="inventory-icon" />

@@ -58,6 +58,13 @@ const Header = () => {
             </Link>
           </li>
         )}
+        {user && (
+          <li>
+            <Link className="nav-link" to="/add-item">
+              Add item
+            </Link>
+          </li>
+        )}
         {!user && (
           <li>
             <Link className="nav-link" to="/login">

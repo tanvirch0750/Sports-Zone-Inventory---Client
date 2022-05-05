@@ -89,7 +89,7 @@ const InventoryItemDetails = () => {
               }`}
             </h4>
             <h4>Email: {user.email}</h4>
-            <h4>Outlet: {inventory.storeName}</h4>
+            <h4>Outlet: {inventory.outlet}</h4>
             <h4>Warehouse: {inventory.warehouse}</h4>
           </div>
           <div className="owner-details-img">

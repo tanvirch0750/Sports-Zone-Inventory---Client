@@ -28,7 +28,7 @@ const ManageInventory = () => {
               {inventory.map((item) => (
                 <tr key={item._id}>
                   <td data-lebel="Name">{item.name}</td>
-                  <td data-lebel="Outlet">{item.storeName}</td>
+                  <td data-lebel="Outlet">{item.outlet}</td>
                   <td data-lebel="Supplier">{item.supplier}</td>
                   <td data-lebel="Price">{item.price}</td>
                   <td data-lebel="Quantity">{item.quantity}</td>
