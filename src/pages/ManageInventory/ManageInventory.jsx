@@ -1,4 +1,5 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import useInventory from "../../hooks/useInventory";
 import "./ManageInventory.css";
 
@@ -21,12 +22,16 @@ const ManageInventory = () => {
     }
   };
 
+  const navigate = useNavigate();
+
   return (
     <section className="manage-inventory">
       <div className="manage-inventory-inner container">
         <div className="table-header">
           <h3>Manage Inventories</h3>
-          <button className="btn">Add Item</button>
+          <button onClick={() => navigate("/add-item")} className="btn">
+            Add Item
+          </button>
         </div>
         <div className="table-section">
           <table>

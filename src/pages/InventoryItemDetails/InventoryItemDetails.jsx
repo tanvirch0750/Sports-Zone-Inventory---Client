@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useForm } from "react-hook-form";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import auth from "../../Firebase/Firebase.init";
 import "./InventoryItemDetails.css";
 
@@ -19,6 +19,7 @@ const InventoryItemDetails = () => {
     reset,
     formState: { errors },
   } = useForm({});
+  const navigate = useNavigate();
 
   useEffect(() => {
     setLoadData(true);
@@ -75,28 +76,23 @@ const InventoryItemDetails = () => {
     reset();
   };
 
+  const handleManageInventory = () => {
+    navigate(`/manage-inventory`);
+  };
+
   return (
     <section className="inventory-item-details">
       <div className="inventory-item-details container">
         <div className="items-owner-details">
           <div className="owner-deatils-content">
-            <h4>
-              Name:{" "}
-              {`${
-                user.displayName
-                  ? user.displayName
-                  : "Please Update your profile"
-              }`}
-            </h4>
             <h4>Email: {user.email}</h4>
             <h4>Outlet: {inventory.outlet}</h4>
             <h4>Warehouse: {inventory.warehouse}</h4>
           </div>
           <div className="owner-details-img">
-            <div className="owner-detail-img-box">
-              <img src={user.photoURL} alt="user" />
-            </div>
-            <button className="btn">Update Profile</button>
+            <button onClick={handleManageInventory} className="btn btn-sm">
+              Manage Inventories
+            </button>
           </div>
         </div>
         <div className="item-details">
