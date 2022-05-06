@@ -8,6 +8,7 @@ import Home from "./pages/Home/Home";
 import InventoryItemDetails from "./pages/InventoryItemDetails/InventoryItemDetails";
 import ManageInventory from "./pages/ManageInventory/ManageInventory";
 import MyItems from "./pages/MyItems/MyItems";
+import Footer from "./shared/Footer/Footer.jsx";
 import Header from "./shared/Header/Header";
 
 function App() {
@@ -51,6 +52,7 @@ function App() {
         <Route path="/login" element={<Login />}></Route>
         <Route path="/signup" element={<SignUp />}></Route>
       </Routes>
+      <Footer />
     </>
   );
 }

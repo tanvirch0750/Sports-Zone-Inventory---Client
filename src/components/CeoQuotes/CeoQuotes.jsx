@@ -17,12 +17,13 @@ const CeoQuotes = () => {
               scenes, particularly when it comes to managing equipment. If
               you’re still using antiquated processes to keep track of your
               sports equipment, it’s time to consider moving into the digital
-              age with a state-of-the-art system. We are providing you that.
+              age with a state-of-the-art system. So we are providing that
+              system for all out outlet around the country.
             </blockquote>
             <p>
               <span className="ceo-name">Marc Spector</span>
               <span className="designation">
-                CEO - <span>Sports Inventory</span>
+                CEO - <span>Sports Zone</span>
               </span>
             </p>
           </figure>

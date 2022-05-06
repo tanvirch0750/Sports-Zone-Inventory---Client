@@ -10,7 +10,7 @@ const Features = () => {
       <div className="container feature-inner">
         <div className="heading">
           <p>Our Strength & Commitment</p>
-          <h2>Key features of our Sports Inventory </h2>
+          <h2>Key features of Sports Zone Inventory </h2>
         </div>
         <div className="features-items">
           <div className="feature-item">

@@ -1,20 +1,46 @@
 import React from "react";
+import { IoCheckmarkOutline } from "react-icons/io5";
 import "./Banner.css";
 
 const Banner = () => {
   return (
     <section className="banner">
       <div className="banner-inner container">
-        <p>Welcome to sports inventory.</p>
-        <h1>
-          Sports equipments inventory management for organized sporting
-          business.
-        </h1>
-
-        <p className="banner-text">
-          We solve your inventory problem best possible way!
-        </p>
-        <button className="btn btn-lg">Manage Inventory</button>
+        <div className="inner-content-left">
+          <p>Welcome to inventory of sports Zone.</p>
+          <h1>
+            Sports equipments inventory management <br /> for{" "}
+            <span>Sports Zone</span>.
+          </h1>
+          <button className="btn btn-lg">Manage Inventory</button>
+        </div>
+        <div className="inner-content-right">
+          <div>
+            <span>
+              <IoCheckmarkOutline className="icon" /> Product Traceabillity
+            </span>
+            <span>
+              <IoCheckmarkOutline className="icon" /> Barcoding & Barcode
+              Scanning
+            </span>
+            <span>
+              <IoCheckmarkOutline className="icon" /> Humidity Control
+              Environment{" "}
+            </span>
+            <span>
+              <IoCheckmarkOutline className="icon" /> 24/7 Monitoring System
+            </span>
+            <span>
+              <IoCheckmarkOutline className="icon" /> Disaster Recovery Plans
+            </span>
+            <span>
+              <IoCheckmarkOutline className="icon" /> Reverse Logistics
+            </span>
+            <span>
+              <IoCheckmarkOutline className="icon" /> Dedicated Tranport
+            </span>
+          </div>
+        </div>
       </div>
     </section>
   );

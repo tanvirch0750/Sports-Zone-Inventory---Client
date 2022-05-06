@@ -15,20 +15,54 @@
   align-items: center;
 }
 
+.banner-inner {
+  display: grid;
+  grid-template-columns: 65fr 35fr;
+  gap: 3.2rem;
+  align-items: center;
+  justify-items: space-between;
+}
+
+.inner-content-right {
+  justify-self: center;
+}
+
+.inner-content-right div {
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+}
+
+.inner-content-right div span {
+  display: flex;
+  align-items: center;
+  font-size: 1.8rem;
+  gap: 1.8rem;
+  color: var(--color-slate-lightest);
+}
+
+.inner-content-right div span .icon {
+  color: var(--color-secondary);
+}
+
 .banner p {
   font-size: 1.6rem;
-  color: var(--color-secondary);
+  color: var(--color-slate-light);
   margin-bottom: 1.2rem;
 }
 
 .banner h1 {
-  font-size: 6.6rem;
-  line-height: 1.1;
+  font-size: 6.2rem;
+  line-height: 1.2;
   font-weight: 500;
   color: var(--color-slate-lightest);
   text-transform: none;
   letter-spacing: 0.05px;
-  margin-bottom: 3rem;
+  text-transform: capitalize;
+}
+
+.banner h1 span {
+  color: var(--color-secondary);
 }
 
 .banner .banner-text {

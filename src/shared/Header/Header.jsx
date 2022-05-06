@@ -37,7 +37,7 @@ const Header = () => {
     >
       <div className="logo">
         <Link className="logo-link" to="/">
-          Sinventory
+          Sports Zone
         </Link>
       </div>
       <ul className="navigation">
