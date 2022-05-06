@@ -18,7 +18,7 @@ const CeoQuotes = () => {
               you’re still using antiquated processes to keep track of your
               sports equipment, it’s time to consider moving into the digital
               age with a state-of-the-art system. So we are providing that
-              system for all out outlet around the country.
+              system for all our outlet around the country.
             </blockquote>
             <p>
               <span className="ceo-name">Marc Spector</span>
