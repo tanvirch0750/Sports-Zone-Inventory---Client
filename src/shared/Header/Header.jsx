@@ -1,6 +1,7 @@
 import { signOut } from "firebase/auth";
 import React, { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
+import { IoCloseOutline, IoMenuOutline } from "react-icons/io5";
 import { Link, useLocation } from "react-router-dom";
 import auth from "../../Firebase/Firebase.init";
 import "./Header.css";
@@ -8,6 +9,7 @@ import "./Header.css";
 const Header = () => {
   const [user] = useAuthState(auth);
   const [scrolled, setScrolled] = useState(false);
+  const [open, setOpen] = useState(false);
   const { pathname } = useLocation();
 
   const handleScroll = () => {
@@ -33,7 +35,9 @@ const Header = () => {
   // navbarClasses.join(" ")
   return (
     <header
-      className={`${pathname === "/" ? navbarClasses.join(" ") : ""} header`}
+      className={`${pathname === "/" ? navbarClasses.join(" ") : ""} header ${
+        open ? "open" : ""
+      }`}
     >
       <div className="logo">
         <Link className="logo-link" to="/">
@@ -75,19 +79,22 @@ const Header = () => {
           </li>
         )}
         {user ? (
-          <li>
+          <li className="nav-btn">
             <Link className="btn btn-sm" to="/login" onClick={handleSignOut}>
               Logout
             </Link>
           </li>
         ) : (
-          <li>
+          <li className="nav-btn">
             <Link className="btn btn-sm" to="/signup">
               Signup
             </Link>
           </li>
         )}
       </ul>
+      <button className="hamburger-btn" onClick={() => setOpen(!open)}>
+        {open ? <IoCloseOutline /> : <IoMenuOutline />}
+      </button>
     </header>
   );
 };
