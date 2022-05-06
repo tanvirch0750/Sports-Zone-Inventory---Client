@@ -23,20 +23,20 @@
   margin-bottom: 0;
 }
 
-.address-box div {
+.address-box {
   display: flex;
   flex-direction: column;
   gap: 1.6rem;
   font-size: 1.6rem;
 }
 
-.address-box div span {
+.address-box span {
   display: flex;
   align-items: center;
   gap: 1.6rem;
 }
 
-.address-box div span .icon {
+.address-box span .icon {
   color: var(--color-secondary);
 }
 
@@ -49,4 +49,41 @@
 
 .social-media-box span {
   cursor: pointer;
+}
+
+@media only screen and (max-width: 1100px) {
+}
+
+@media only screen and (max-width: 900px) {
+  .footer-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .logo-box {
+    justify-content: start;
+    gap: 1.6rem;
+  }
+
+  .address-box {
+    margin-left: auto;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .footer {
+    padding: 4.8rem 0;
+    margin-top: 5.2rem;
+  }
+  .footer-inner {
+    grid-template-columns: 1fr;
+  }
+
+  .address-box {
+    margin-left: 0;
+  }
+
+  .logo-box {
+    order: 6;
+  }
 }

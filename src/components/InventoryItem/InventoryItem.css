@@ -17,7 +17,6 @@
 
 .inventory-img img {
   width: 100%;
-
   border: 2px solid var(--color-secondary);
 }
 
@@ -66,4 +65,27 @@
   width: 100%;
   font-size: 1.5rem;
   margin-top: 1.6rem;
+}
+
+@media only screen and (max-width: 1100px) {
+  .inventory-items {
+    display: grid;
+    grid-gap: 2.4rem;
+  }
+
+  .inventory-item {
+    grid-template-columns: 1fr;
+    grid-gap: 2rem;
+  }
+
+  .inventory-item .inventory-img {
+    height: 35rem;
+  }
+
+  .inventory-desc {
+    transform: translateY(0);
+  }
+}
+
+@media only screen and (max-width: 1000px) {
 }

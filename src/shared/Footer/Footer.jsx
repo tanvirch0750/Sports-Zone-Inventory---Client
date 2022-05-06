@@ -21,22 +21,20 @@ const Footer = () => {
           <p>&copy; Sports house inventory 2022. All right reserved.</p>
         </div>
         <div className="address-box">
-          <div>
-            <span>
-              <IoCallOutline className="icon" /> Main Office: +884747474
-            </span>
-            <span>
-              <IoCallOutline className="icon" /> Inventory Office: +88747475
-            </span>
-            <span>
-              <IoLocationOutline className="icon" />
-              21 Rb, Chicago, USA
-            </span>
-            <span>
-              <IoMailOutline className="icon" />
-              www.sportszone@sz.com
-            </span>
-          </div>
+          <span>
+            <IoCallOutline className="icon" /> Main Office: +884747474
+          </span>
+          <span>
+            <IoCallOutline className="icon" /> Inventory Office: +88747475
+          </span>
+          <span>
+            <IoLocationOutline className="icon" />
+            21 Rb, Chicago, USA
+          </span>
+          <span>
+            <IoMailOutline className="icon" />
+            www.sportszone@sz.com
+          </span>
         </div>
         <div className="social-media-box">
           <span>
