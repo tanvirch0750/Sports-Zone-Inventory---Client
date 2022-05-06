@@ -1,5 +1,5 @@
 .features {
-  padding: 9.6rem 0;
+  padding: 6.2rem 0;
 }
 
 .features-items {
@@ -72,9 +72,15 @@
 }
 
 @media only screen and (max-width: 900px) {
+  .features {
+    padding: 0;
+  }
+  .features-items {
+    gap: 6.2rem;
+  }
   .feature-item {
     display: grid;
-    grid-gap: 4.8rem;
+    grid-gap: 3.2rem;
     align-items: center;
   }
 
