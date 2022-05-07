@@ -1,14 +1,7 @@
 .inventory-item-details {
   padding: 4.2rem 0;
+  padding-bottom: 0;
 }
-/* .inventory-item-details .heading {
-  margin: 4.2rem 0;
-  text-align: center;
-}
-
-.inventory-item-details h2::after {
-  display: none;
-} */
 
 .items-owner-details {
   max-width: 80rem;
@@ -32,7 +25,7 @@
   font-size: 1.6rem;
 }
 
-.owner-details-img {
+.owner-details-btn {
   margin-left: auto;
   text-align: center;
   display: flex;
@@ -43,11 +36,6 @@
 .owner-detail-img-box img {
   width: 10rem;
 }
-
-/* .owner-details-img button {
-  border: none;
-  padding: 0;
-} */
 
 .item-details {
   max-width: 80rem;
@@ -128,4 +116,33 @@
 
 .inventory-item-operations form .btn {
   padding: 2rem 3.6rem;
+}
+
+@media only screen and (max-width: 700px) {
+  .items-owner-details {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 2.4rem;
+
+    text-align: center;
+  }
+
+  .owner-details-btn {
+    margin-left: none;
+    text-align: center;
+  }
+
+  .item-details {
+    margin: 3.2rem auto;
+    grid-template-columns: 1fr;
+  }
+
+  .inventory-item-operations {
+    margin: 3.2rem auto;
+    grid-template-columns: 1fr;
+  }
+
+  .inventory-item-operations form {
+    grid-template-columns: 1fr;
+  }
 }

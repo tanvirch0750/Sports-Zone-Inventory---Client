@@ -1,5 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import Loading from "../../components/Loading/Loading";
 import useInventory from "../../hooks/useInventory";
 import "./ManageInventory.css";
 
@@ -23,6 +24,10 @@ const ManageInventory = () => {
   };
 
   const navigate = useNavigate();
+
+  if (loadData) {
+    return <Loading loadData={loadData} />;
+  }
 
   return (
     <section className="manage-inventory">

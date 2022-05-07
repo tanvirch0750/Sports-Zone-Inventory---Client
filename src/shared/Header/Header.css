@@ -47,7 +47,7 @@
 }
 
 .hamburger-btn {
-  border: 1px solid var(--color-secondary);
+  border: none;
   background: transparent;
   color: var(--color-secondary);
   font-size: 4rem;

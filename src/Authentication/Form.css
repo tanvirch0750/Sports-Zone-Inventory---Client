@@ -107,3 +107,9 @@ input:-webkit-autofill {
 .login-signup-link:hover {
   color: rgba(100, 255, 219, 0.76);
 }
+
+@media only screen and (max-width: 700px) {
+  .form-container {
+    padding: 1.6rem;
+  }
+}

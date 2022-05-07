@@ -4,6 +4,7 @@ import { useCreateUserWithEmailAndPassword } from "react-firebase-hooks/auth";
 import { useForm } from "react-hook-form";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import * as Yup from "yup";
+import Loading from "../../components/Loading/Loading";
 import auth from "../../Firebase/Firebase.init";
 import useToken from "../../hooks/useToken";
 import "../Form.css";
@@ -57,34 +58,16 @@ const SignUp = () => {
     }
   }, [token]);
 
+  if (loading) {
+    return <Loading loadData={loading} />;
+  }
+
   return (
     <section className="signup">
       <div className="container signup-inner">
         <div className="form-container">
           <h2>Registration</h2>
           <form onSubmit={handleSubmit(onSubmit)}>
-            {/* <div className="form-control">
-              <label htmlFor="name">Your name:</label>
-              <input
-                {...register("name")}
-                id="name"
-                type="text"
-                placeholder="Enter your name"
-              />
-              <p className="error-message">{errors.name?.message}</p>
-            </div> */}
-            {/* <div className="form-control">
-              <label htmlFor="store">Your store/business name:</label>
-              <input
-                {...register("store", {
-                  required: "Please give store/business name",
-                })}
-                id="store"
-                type="text"
-                placeholder="Enter your store/buiness name"
-              />
-              <p className="error-message">{errors.store?.message}</p>
-            </div> */}
             <div className="form-control">
               <label htmlFor="name">Your email:</label>
               <input
@@ -112,24 +95,11 @@ const SignUp = () => {
               />
               <p className="error-message">{errors.confirmPassword?.message}</p>
             </div>
-            {/* <div className="form-control">
-              <label htmlFor="name">Select one of our warehouse:</label>
-              <select
-                {...register("Warehouse", {
-                  required: "Please select a warehouse",
-                })}
-              >
-                <option value="Chicago">Chicago</option>
-                <option value="Illinios">Illinios</option>
-                <option value="New York">Hell Kitchen</option>
-              </select>
-              <p className="error-message">{errors.address?.message}</p>
-            </div> */}
             {customError && <p className="error-message">{customError}</p>}
             <input type="submit" className="btn form-btn" value="Signup" />
           </form>
           <p className="login-signup-text">
-            Don't have an account?{" "}
+            Already have an account?{" "}
             <Link to="/login" className="login-signup-link">
               Login
             </Link>

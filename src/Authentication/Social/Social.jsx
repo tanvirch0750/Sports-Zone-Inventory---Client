@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useSignInWithGoogle } from "react-firebase-hooks/auth";
 import { useLocation, useNavigate } from "react-router-dom";
+import Loading from "../../components/Loading/Loading";
 import auth from "../../Firebase/Firebase.init";
 import useToken from "../../hooks/useToken";
 import "./Social.css";
@@ -26,6 +27,10 @@ const Social = ({ text }) => {
 
   const navigate = useNavigate();
 
+  const handleGoogleSubmit = () => {
+    signInWithGoogle();
+  };
+
   useEffect(() => {
     if (token) {
       navigate(from, { replace: true });
@@ -39,9 +44,10 @@ const Social = ({ text }) => {
     }
   }, [token]);
 
-  const handleGoogleSubmit = () => {
-    signInWithGoogle();
-  };
+  if (loading) {
+    return <Loading loadData={loading} />;
+  }
+
   return (
     <div className="social">
       <div className="or-separator">

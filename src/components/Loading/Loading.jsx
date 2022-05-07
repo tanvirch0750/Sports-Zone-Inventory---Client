@@ -1,9 +1,11 @@
 import React from "react";
+import ClipLoader from "react-spinners/ClipLoader";
+import "./Loading.css";
 
-const Loading = () => {
+const Loading = ({ loadData }) => {
   return (
-    <div className="loading">
-      <h1>Please wait a moment...</h1>
+    <div className="loader">
+      <ClipLoader color="#64ffda" loading={loadData} size={100} />
     </div>
   );
 };

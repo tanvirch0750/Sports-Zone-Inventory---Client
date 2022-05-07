@@ -4,6 +4,7 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { useNavigate } from "react-router-dom";
 import axiosPrivate from "../../api/axiosPrivate";
 import InventoryItem from "../../components/InventoryItem/InventoryItem";
+import Loading from "../../components/Loading/Loading";
 import auth from "../../Firebase/Firebase.init";
 import "./MyItems.css";
 
@@ -12,17 +13,6 @@ const MyItems = () => {
   const [loadData, setLoadData] = useState(false);
   const [user] = useAuthState(auth);
   const naviagate = useNavigate();
-
-  // useEffect(() => {
-  //   setLoadData(true);
-  //   const email = user.email;
-  //   fetch(`https://sheltered-dusk-40415.herokuapp.com/inventory?email=${email}`)
-  //     .then((response) => response.json())
-  //     .then((data) => {
-  //       setInventory(data);
-  //       setLoadData(false);
-  //     });
-  // }, []);
 
   useEffect(() => {
     setLoadData(true);
@@ -59,6 +49,10 @@ const MyItems = () => {
         });
     }
   };
+
+  if (loadData) {
+    return <Loading loadData={loadData} />;
+  }
 
   return (
     <section className="my-items">

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useForm } from "react-hook-form";
 import { useNavigate, useParams } from "react-router-dom";
+import Loading from "../../components/Loading/Loading";
 import auth from "../../Firebase/Firebase.init";
 import "./InventoryItemDetails.css";
 
@@ -80,6 +81,10 @@ const InventoryItemDetails = () => {
     navigate(`/manage-inventory`);
   };
 
+  if (loadData) {
+    return <Loading loadData={loadData} />;
+  }
+
   return (
     <section className="inventory-item-details">
       <div className="inventory-item-details container">
@@ -89,7 +94,7 @@ const InventoryItemDetails = () => {
             <h4>Outlet: {inventory.outlet}</h4>
             <h4>Warehouse: {inventory.warehouse}</h4>
           </div>
-          <div className="owner-details-img">
+          <div className="owner-details-btn">
             <button onClick={handleManageInventory} className="btn btn-sm">
               Manage Inventories
             </button>

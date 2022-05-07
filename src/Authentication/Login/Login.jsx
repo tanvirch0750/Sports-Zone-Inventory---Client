@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from "react";
 import {
   useSendPasswordResetEmail,
-  useSignInWithEmailAndPassword
+  useSignInWithEmailAndPassword,
 } from "react-firebase-hooks/auth";
 import { useForm } from "react-hook-form";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Loading from "../../components/Loading/Loading";
 import auth from "../../Firebase/Firebase.init";
 import useToken from "../../hooks/useToken";
 import "../Form.css";
@@ -91,6 +92,10 @@ const Login = () => {
       });
     }
   };
+
+  if (loading || sending) {
+    return <Loading loadData={loading || sending} />;
+  }
 
   return (
     <section className="login">
