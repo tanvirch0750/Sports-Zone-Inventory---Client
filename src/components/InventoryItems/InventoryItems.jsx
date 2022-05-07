@@ -31,7 +31,7 @@ const InventoryItems = () => {
         </div>
         <div className="inventories-btn">
           <button onClick={handleManageInventory} className="btn btn-lg">
-            Manage all inveontories
+            Manage inveontories
           </button>
         </div>
       </div>
