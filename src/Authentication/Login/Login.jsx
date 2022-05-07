@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from "react";
 import {
   useSendPasswordResetEmail,
-  useSignInWithEmailAndPassword,
+  useSignInWithEmailAndPassword
 } from "react-firebase-hooks/auth";
 import { useForm } from "react-hook-form";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import auth from "../../Firebase/Firebase.init";
+import useToken from "../../hooks/useToken";
 import "../Form.css";
 import Social from "../Social/Social";
 import "./Login.css";
@@ -19,6 +20,7 @@ const Login = () => {
     useSignInWithEmailAndPassword(auth);
   const [sendPasswordResetEmail, sending, errorReset] =
     useSendPasswordResetEmail(auth);
+  const [token] = useToken(user);
   const {
     register,
     handleSubmit,
@@ -41,16 +43,15 @@ const Login = () => {
     }
   });
 
-  const onSubmit = (data) => {
-    setFormData(data);
-    signInWithEmailAndPassword(data.email, data.password);
+  const onSubmit = async (dataa) => {
+    await signInWithEmailAndPassword(dataa.email, dataa.password);
   };
 
   useEffect(() => {
-    if (user) {
+    if (token) {
       navigate(from, { replace: true });
     }
-  }, [user, navigate, from]);
+  }, [token]);
 
   const email = watch("email");
   function validateEmail() {

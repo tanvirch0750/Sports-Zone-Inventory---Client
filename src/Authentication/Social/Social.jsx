@@ -2,11 +2,13 @@ import React, { useEffect, useState } from "react";
 import { useSignInWithGoogle } from "react-firebase-hooks/auth";
 import { useLocation, useNavigate } from "react-router-dom";
 import auth from "../../Firebase/Firebase.init";
+import useToken from "../../hooks/useToken";
 import "./Social.css";
 
 const Social = ({ text }) => {
   const [customError, setCustomError] = useState("");
   const [signInWithGoogle, user, loading, error] = useSignInWithGoogle(auth);
+  const [token] = useToken(user);
   const location = useLocation();
   const from = location?.state?.from?.pathname || "/";
 
@@ -23,8 +25,9 @@ const Social = ({ text }) => {
   });
 
   const navigate = useNavigate();
+
   useEffect(() => {
-    if (user) {
+    if (token) {
       navigate(from, { replace: true });
     } else {
       if (text === "login") {
@@ -34,7 +37,7 @@ const Social = ({ text }) => {
         navigate("/signup");
       }
     }
-  }, [user, navigate]);
+  }, [token]);
 
   const handleGoogleSubmit = () => {
     signInWithGoogle();

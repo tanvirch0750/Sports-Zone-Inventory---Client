@@ -1,5 +1,8 @@
+import { signOut } from "firebase/auth";
 import React, { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
+import { useNavigate } from "react-router-dom";
+import axiosPrivate from "../../api/axiosPrivate";
 import InventoryItem from "../../components/InventoryItem/InventoryItem";
 import auth from "../../Firebase/Firebase.init";
 import "./MyItems.css";
@@ -8,17 +11,38 @@ const MyItems = () => {
   const [inventory, setInventory] = useState([]);
   const [loadData, setLoadData] = useState(false);
   const [user] = useAuthState(auth);
+  const naviagate = useNavigate();
+
+  // useEffect(() => {
+  //   setLoadData(true);
+  //   const email = user.email;
+  //   fetch(`https://sheltered-dusk-40415.herokuapp.com/inventory?email=${email}`)
+  //     .then((response) => response.json())
+  //     .then((data) => {
+  //       setInventory(data);
+  //       setLoadData(false);
+  //     });
+  // }, []);
 
   useEffect(() => {
     setLoadData(true);
-    const email = user.email;
-    fetch(`https://sheltered-dusk-40415.herokuapp.com/inventory?email=${email}`)
-      .then((response) => response.json())
-      .then((data) => {
+    const getInventory = async () => {
+      const email = user.email;
+      const url = `https://sheltered-dusk-40415.herokuapp.com/inventory/myItems?email=${email}`;
+      try {
+        const { data } = await axiosPrivate.get(url);
+
         setInventory(data);
         setLoadData(false);
-      });
-  }, []);
+      } catch (error) {
+        if (error.response.status === 403 || error.response.status === 401) {
+          signOut(auth);
+          naviagate("/login");
+        }
+      }
+    };
+    getInventory();
+  }, [user]);
 
   const handleDelete = (id) => {
     const proceed = window.confirm("Are you sure?");

@@ -6,7 +6,7 @@ const useInventory = () => {
 
   useEffect(() => {
     setLoadData(true);
-    fetch("https://sheltered-dusk-40415.herokuapp.com/inventory")
+    fetch("http://sheltered-dusk-40415.herokuapp.com/inventory")
       .then((response) => response.json())
       .then((data) => {
         setInventory(data);

@@ -5,6 +5,7 @@ import { useForm } from "react-hook-form";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import * as Yup from "yup";
 import auth from "../../Firebase/Firebase.init";
+import useToken from "../../hooks/useToken";
 import "../Form.css";
 import Social from "../Social/Social";
 import "./SignUp.css";
@@ -14,6 +15,7 @@ const SignUp = () => {
 
   const [createUserWithEmailAndPassword, user, loading, error] =
     useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true });
+  const [token] = useToken(user);
   const location = useLocation();
   const from = location?.state?.from?.pathname || "/";
 
@@ -50,10 +52,10 @@ const SignUp = () => {
 
   const navigate = useNavigate();
   useEffect(() => {
-    if (user) {
+    if (token) {
       navigate(from, { replace: true });
     }
-  }, [user, navigate, from]);
+  }, [token]);
 
   return (
     <section className="signup">
