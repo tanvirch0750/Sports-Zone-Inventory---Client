@@ -9,8 +9,8 @@ const Banner = () => {
         <div className="inner-content-left">
           <p>Welcome to inventory of sports Zone.</p>
           <h1>
-            Sports equipments inventory management <br /> for{" "}
-            <span>Sports Zone</span>.
+            Sports equipments inventory management
+            <br /> for <span>Sports Zone</span>.
           </h1>
           <button className="btn btn-lg">Manage Inventory</button>
         </div>

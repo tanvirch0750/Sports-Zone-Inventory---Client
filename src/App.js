@@ -4,6 +4,7 @@ import Login from "./Authentication/Login/Login";
 import RequireAuth from "./Authentication/RequireAuth/RequireAuth";
 import SignUp from "./Authentication/SignUp/SignUp";
 import AddItem from "./pages/AddItem/AddItem";
+import Blog from "./pages/Blog/Blog";
 import Home from "./pages/Home/Home";
 import InventoryItemDetails from "./pages/InventoryItemDetails/InventoryItemDetails";
 import ManageInventory from "./pages/ManageInventory/ManageInventory";
@@ -52,6 +53,7 @@ function App() {
         ></Route>
         <Route path="/login" element={<Login />}></Route>
         <Route path="/signup" element={<SignUp />}></Route>
+        <Route path="/blog" element={<Blog />}></Route>
         <Route path="*" element={<NotFound />}></Route>
       </Routes>
       <Footer />

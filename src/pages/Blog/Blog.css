@@ -1,0 +1,30 @@
+.blogs {
+  padding-top: 9.6rem;
+}
+
+.blogs h2::after {
+  display: none;
+}
+
+.blogs-inner {
+  display: flex;
+  flex-direction: column;
+  gap: 3.2rem;
+}
+
+.blog {
+  max-width: 80rem;
+  margin: 0 auto;
+  background-color: var(--color-primary-light);
+  padding: 3.2rem;
+}
+
+.blog h2 {
+  font-size: 3.2rem;
+  line-height: 1.1;
+  margin-bottom: 3.2rem;
+}
+
+.blog p {
+  font-size: 1.6rem;
+}
