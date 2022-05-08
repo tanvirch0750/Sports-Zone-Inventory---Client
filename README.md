@@ -1,8 +1,8 @@
 # Sports Zone - Inventory
 
-Live website link [Sports Zone - Inventory](https://sports-zone-inventory.netlify.app/).
-Server Side github link [Sports Zone Server Github](https://github.com/ProgrammingHeroWC4/warehouse-management-server-side-tanvirch0750)
-Server Side heroku link [Sports Zone Server Heroku](https://sheltered-dusk-40415.herokuapp.com/)
+- Live website link [Sports Zone - Inventory](https://sports-zone-inventory.netlify.app/)
+- Server Side github link [Sports Zone Server Github](https://github.com/ProgrammingHeroWC4/warehouse-management-server-side-tanvirch0750)
+- Server Side heroku link [Sports Zone Server Heroku](https://sheltered-dusk-40415.herokuapp.com/)
 
 ## Website description
 
