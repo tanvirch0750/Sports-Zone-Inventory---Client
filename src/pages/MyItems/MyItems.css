@@ -20,6 +20,10 @@
   padding: 0 6.4rem;
 }
 
+.inventory-empty-message {
+  text-align: center;
+}
+
 @media only screen and (max-width: 1100px) {
   .my-inventory-items {
     display: grid;

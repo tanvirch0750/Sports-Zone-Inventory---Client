@@ -54,6 +54,10 @@ const MyItems = () => {
     setDeleteId(id);
   };
 
+  const handleAddItem = () => {
+    naviagate("/add-item");
+  };
+
   if (loadData) {
     return <Loading loadData={loadData} />;
   }
@@ -72,6 +76,14 @@ const MyItems = () => {
           <div className="heading">
             <h2>My Inventories</h2>
           </div>
+          {inventory.length === 0 && (
+            <div className="inventory-empty-message">
+              <h3>Your Item list is empty. Please add item</h3>
+              <button onClick={handleAddItem} className="btn">
+                Add Item
+              </button>
+            </div>
+          )}
           <div className="my-inventory-items">
             {inventory.map((item) => (
               <InventoryItem
