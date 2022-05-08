@@ -9,6 +9,7 @@ const ManageInventory = () => {
   const [inventory, loadData, setInventory] = useInventory();
   const [open, setOpen] = useState(false);
   const [deleteId, setDeleteId] = useState("");
+  const navigate = useNavigate();
 
   const deleteFunction = () => {
     const url = `https://sheltered-dusk-40415.herokuapp.com/inventory/${deleteId}`;
@@ -27,7 +28,9 @@ const ManageInventory = () => {
     setDeleteId(id);
   };
 
-  const navigate = useNavigate();
+  const handleUpdate = (id) => {
+    navigate(`/inventory/${id}`);
+  };
 
   if (loadData) {
     return <Loading loadData={loadData} />;
@@ -60,7 +63,7 @@ const ManageInventory = () => {
                   <th>Price</th>
                   <th>Quantity</th>
                   <th>Warehouse</th>
-                  <th>Delete</th>
+                  <th>Action</th>
                 </tr>
               </thead>
               <tbody>
@@ -77,7 +80,13 @@ const ManageInventory = () => {
                         onClick={() => handleDelete(item._id)}
                         className="btn table-btn"
                       >
-                        delete
+                        Delete
+                      </button>
+                      <button
+                        onClick={() => handleUpdate(item._id)}
+                        className="btn table-btn"
+                      >
+                        View
                       </button>
                     </td>
                   </tr>

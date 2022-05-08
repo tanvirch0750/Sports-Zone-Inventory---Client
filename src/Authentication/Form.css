@@ -31,7 +31,7 @@
 }
 
 .form-control input::placeholder {
-  color: var(--color-slate-light);
+  color: rgba(168, 178, 209, 0.705);
 }
 
 .form-control label {

@@ -50,6 +50,7 @@ const InventoryItemDetails = () => {
       )
         .then((res) => res.json())
         .then((data) => {
+          setDeliveredMessage(false);
           setQuantity(quantity + 1);
           setOpen(true);
           setDisabled(false);

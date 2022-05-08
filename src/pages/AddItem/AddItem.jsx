@@ -1,7 +1,9 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useAuthState } from "react-firebase-hooks/auth";
 import { useForm } from "react-hook-form";
 import ConfirmationBox from "../../components/ConfirmationBox/ConfirmationBox";
 import Loading from "../../components/Loading/Loading";
+import auth from "../../Firebase/Firebase.init";
 import "./AddItem.css";
 
 const AddItem = () => {
@@ -14,6 +16,7 @@ const AddItem = () => {
   } = useForm({});
   const [open, setOpen] = useState(false);
   const [loadData, setLoadData] = useState(false);
+  const [user] = useAuthState(auth);
 
   const onSubmit = (data) => {
     let newData = { ...data, quantity: +data.quantity, price: +data.price };
@@ -32,6 +35,14 @@ const AddItem = () => {
         reset();
       });
   };
+
+  useEffect(() => {
+    let defaultValues = {};
+
+    defaultValues.email = user.email;
+
+    reset({ ...defaultValues });
+  }, []);
 
   if (loadData) {
     return <Loading loadData={loadData} />;

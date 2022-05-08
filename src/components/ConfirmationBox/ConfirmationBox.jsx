@@ -24,9 +24,6 @@ const ConfirmationBox = ({
   return (
     <div className="cb-background">
       <div className="cb-container">
-        {/* <div className="cb-close-btn">
-          <button onClick={() => setOpen(false)}>X</button>
-        </div> */}
         {delivered && (
           <div className="cb-title">
             <h3>
