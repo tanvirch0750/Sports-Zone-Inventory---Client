@@ -61,7 +61,11 @@ const MyItems = () => {
   return (
     <>
       {open && (
-        <ConfirmationBox setOpen={setOpen} deleteFunction={deleteFunction} />
+        <ConfirmationBox
+          setOpen={setOpen}
+          deleteFunction={deleteFunction}
+          confirmation={true}
+        />
       )}
       <section className="my-items">
         <div className="my-items-inner">

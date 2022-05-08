@@ -2,15 +2,18 @@ import React, { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useForm } from "react-hook-form";
 import { useNavigate, useParams } from "react-router-dom";
+import ConfirmationBox from "../../components/ConfirmationBox/ConfirmationBox";
 import Loading from "../../components/Loading/Loading";
 import auth from "../../Firebase/Firebase.init";
 import "./InventoryItemDetails.css";
 
 const InventoryItemDetails = () => {
   const [inventory, setInventory] = useState([]);
-  const [quantity, setQuantity] = useState(0);
-  const [disabled, setDisabled] = useState(false);
-  const [loadData, setLoadData] = useState(false);
+  const [quantity, setQuantity] = useState(0); // this state for rerender ui after update quantity
+  const [disabled, setDisabled] = useState(false); // this is for disabled btn
+  const [loadData, setLoadData] = useState(false); // for loading component
+  const [open, setOpen] = useState(false); // for confirmation box
+  const [deliveredMessage, setDeliveredMessage] = useState(false); // for confirmation box message
   const [user] = useAuthState(auth);
 
   const { id } = useParams();
@@ -35,7 +38,7 @@ const InventoryItemDetails = () => {
 
   const handleDelevered = () => {
     setDisabled(true);
-    if (inventory.quantity > 0) {
+    if (inventory.quantity >= 1) {
       fetch(
         `https://sheltered-dusk-40415.herokuapp.com/inventory/delivered/${id}`,
         {
@@ -47,19 +50,21 @@ const InventoryItemDetails = () => {
       )
         .then((res) => res.json())
         .then((data) => {
-          console.log(data);
           setQuantity(quantity + 1);
-          alert("Item delivered successfully");
+          setOpen(true);
           setDisabled(false);
         });
-    } else {
-      alert("There is nothing available in the stock. Please stock in");
+    }
+
+    if (inventory.quantity <= 0) {
+      setOpen(true);
       setDisabled(false);
     }
   };
 
+  console.log(open);
+
   const onSubmit = (data) => {
-    console.log(data);
     fetch(`https://sheltered-dusk-40415.herokuapp.com/inventory/stored/${id}`, {
       method: "PUT",
       headers: {
@@ -69,13 +74,15 @@ const InventoryItemDetails = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
+        setDeliveredMessage(true);
+        setOpen(true);
         setQuantity(quantity + 1);
-        alert("Item delivered successfully");
         setDisabled(false);
       });
     reset();
   };
+
+  console.log(open);
 
   const handleManageInventory = () => {
     navigate(`/manage-inventory`);
@@ -86,72 +93,86 @@ const InventoryItemDetails = () => {
   }
 
   return (
-    <section className="inventory-item-details">
-      <div className="inventory-item-details container">
-        <div className="items-owner-details">
-          <div className="owner-deatils-content">
-            <h4>Email: {user.email}</h4>
-            <h4>Outlet: {inventory.outlet}</h4>
-            <h4>Warehouse: {inventory.warehouse}</h4>
-            <h4>Product Id: {inventory._id}</h4>
+    <>
+      {open && (
+        <ConfirmationBox
+          setOpen={setOpen}
+          delivered={inventory.quantity >= 1 ? true : false}
+          stockOut={inventory.quantity <= 0 ? true : false}
+          deliveredMessage={deliveredMessage}
+        />
+      )}
+
+      <section className="inventory-item-details">
+        <div className="inventory-item-details container">
+          <div className="items-owner-details">
+            <div className="owner-deatils-content">
+              <h4>Email: {user.email}</h4>
+              <h4>Outlet: {inventory.outlet}</h4>
+              <h4>Warehouse: {inventory.warehouse}</h4>
+              <h4>Product Id: {inventory._id}</h4>
+            </div>
+            <div className="owner-details-btn">
+              <button onClick={handleManageInventory} className="btn btn-sm">
+                Manage Inventories
+              </button>
+            </div>
           </div>
-          <div className="owner-details-btn">
-            <button onClick={handleManageInventory} className="btn btn-sm">
-              Manage Inventories
-            </button>
-          </div>
-        </div>
-        <div className="item-details">
-          <div className="item-details-img-box">
-            <img src={inventory.image} alt="invntory img" />
-          </div>
-          <div className="item-details-content">
-            <h3>{inventory.name}</h3>
-            <p>{inventory.description}.</p>
-            <div>
-              <span>Supplier: {inventory.supplier}</span>
-              <span>Quantity: {inventory.quantity}</span>
-              <span>Price: ${inventory.price}</span>
-              <span>Total: ${inventory.price * inventory.quantity}</span>
-              <span>
-                Product Status:{" "}
-                <span className="stock-message">
-                  {inventory.quantity > 0 ? "Available" : "Sold Out"}
+          <div className="item-details">
+            <div className="item-details-img-box">
+              <img src={inventory.image} alt="invntory img" />
+            </div>
+            <div className="item-details-content">
+              <h3>{inventory.name}</h3>
+              <p>{inventory.description}.</p>
+              <div>
+                <span>Supplier: {inventory.supplier}</span>
+                <span>
+                  Quantity:{" "}
+                  <span className="stock-message">{inventory.quantity}</span>
                 </span>
-              </span>
+                <span>Price: ${inventory.price}</span>
+                <span>Total: ${inventory.price * inventory.quantity}</span>
+                <span>
+                  Product Status:{" "}
+                  <span className="stock-message">
+                    {inventory.quantity > 0 ? "Available" : "Sold Out"}
+                  </span>
+                </span>
+              </div>
+            </div>
+          </div>
+          <div className="inventory-item-operations">
+            <div className="stock-out">
+              <p>Stock Out:</p>
+              <button
+                disabled={disabled}
+                onClick={handleDelevered}
+                className="btn"
+              >
+                Delivered
+              </button>
+            </div>
+            <div className="stock-in">
+              <p>Stock In:</p>
+              <form onSubmit={handleSubmit(onSubmit)}>
+                <div className="form-control">
+                  <input
+                    {...register("number", {
+                      required: "Please provide stock value",
+                    })}
+                    type="number"
+                    placeholder="Enter stock number"
+                  />
+                  <p className="error-message">{errors.email?.message}</p>
+                </div>
+                <input type="submit" className="btn" value="Restore" />
+              </form>
             </div>
           </div>
         </div>
-        <div className="inventory-item-operations">
-          <div className="stock-out">
-            <p>Stock Out:</p>
-            <button
-              disabled={disabled}
-              onClick={handleDelevered}
-              className="btn"
-            >
-              Delivered
-            </button>
-          </div>
-          <div className="stock-in">
-            <p>Stock In:</p>
-            <form onSubmit={handleSubmit(onSubmit)}>
-              <div className="form-control">
-                <input
-                  {...register("number", {
-                    required: "Please provide stock value",
-                  })}
-                  type="number"
-                  placeholder="Enter stock number"
-                />
-                <p className="error-message">{errors.email?.message}</p>
-              </div>
-              <input type="submit" className="btn" value="Restore" />
-            </form>
-          </div>
-        </div>
-      </div>
-    </section>
+      </section>
+    </>
   );
 };
 

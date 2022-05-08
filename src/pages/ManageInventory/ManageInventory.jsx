@@ -36,7 +36,11 @@ const ManageInventory = () => {
   return (
     <>
       {open && (
-        <ConfirmationBox setOpen={setOpen} deleteFunction={deleteFunction} />
+        <ConfirmationBox
+          setOpen={setOpen}
+          deleteFunction={deleteFunction}
+          confirmation={true}
+        />
       )}
       <section className="manage-inventory">
         <div className="manage-inventory-inner container">
