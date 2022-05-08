@@ -19,7 +19,7 @@ const Banner = () => {
             <br /> for <span>Sports Zone</span>.
           </h1>
           <button className="btn btn-lg" onClick={handleManageInventory}>
-            Manage Inventory
+            Manage Inventories
           </button>
         </div>
         <div className="inner-content-right">
