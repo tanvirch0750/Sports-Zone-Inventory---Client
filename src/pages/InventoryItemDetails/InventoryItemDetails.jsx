@@ -37,6 +37,7 @@ const InventoryItemDetails = () => {
   }, [quantity]);
 
   const handleDelevered = () => {
+    setLoadData(true);
     setDisabled(true);
     if (inventory.quantity >= 1) {
       fetch(
@@ -50,6 +51,7 @@ const InventoryItemDetails = () => {
       )
         .then((res) => res.json())
         .then((data) => {
+          setLoadData(false);
           setDeliveredMessage(false);
           setQuantity(quantity + 1);
           setOpen(true);
@@ -64,6 +66,7 @@ const InventoryItemDetails = () => {
   };
 
   const onSubmit = (data) => {
+    setLoadData(true);
     fetch(`https://sheltered-dusk-40415.herokuapp.com/inventory/stored/${id}`, {
       method: "PUT",
       headers: {
@@ -73,6 +76,7 @@ const InventoryItemDetails = () => {
     })
       .then((res) => res.json())
       .then((data) => {
+        setLoadData(false);
         setDeliveredMessage(true);
         setOpen(true);
         setQuantity(quantity + 1);
