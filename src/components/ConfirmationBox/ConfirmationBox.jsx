@@ -9,6 +9,7 @@ const ConfirmationBox = ({
   confirmation,
   addSuccess,
   deliveredMessage,
+  updateMessage,
 }) => {
   const handleCancel = () => {
     setOpen(false);
@@ -46,7 +47,11 @@ const ConfirmationBox = ({
 
         {addSuccess && (
           <div className="cb-title">
-            <h3>Inventory Item added successfully.</h3>
+            <h3>
+              {updateMessage
+                ? "Item Updated Successfully"
+                : "Inventory Item added successfully"}
+            </h3>
           </div>
         )}
         {confirmation && (

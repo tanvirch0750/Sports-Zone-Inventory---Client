@@ -62,7 +62,7 @@ const Features = () => {
                 critical to run routine maintenance sessions. Unexpected
                 breakdowns can be dangerous and inflict serious damge of your
                 business. So we do, scheduling repair and service events for
-                each active item, so your equipment is always safe ready to be
+                each active item, so our equipment is always safe ready to be
                 delivered.
               </p>
             </div>

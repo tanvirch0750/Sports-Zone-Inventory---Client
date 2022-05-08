@@ -10,6 +10,7 @@ import InventoryItemDetails from "./pages/InventoryItemDetails/InventoryItemDeta
 import ManageInventory from "./pages/ManageInventory/ManageInventory";
 import MyItems from "./pages/MyItems/MyItems";
 import NotFound from "./pages/NotFound/NotFound";
+import UpdateItem from "./pages/UpdateItem/UpdateItem";
 import Footer from "./shared/Footer/Footer.jsx";
 import Header from "./shared/Header/Header";
 
@@ -48,6 +49,14 @@ function App() {
           element={
             <RequireAuth>
               <AddItem />
+            </RequireAuth>
+          }
+        ></Route>
+        <Route
+          path="/update-inventory/:id"
+          element={
+            <RequireAuth>
+              <UpdateItem />
             </RequireAuth>
           }
         ></Route>

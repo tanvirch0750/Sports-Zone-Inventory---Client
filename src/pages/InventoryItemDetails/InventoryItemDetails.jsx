@@ -62,8 +62,6 @@ const InventoryItemDetails = () => {
     }
   };
 
-  console.log(open);
-
   const onSubmit = (data) => {
     fetch(`https://sheltered-dusk-40415.herokuapp.com/inventory/stored/${id}`, {
       method: "PUT",
@@ -82,10 +80,12 @@ const InventoryItemDetails = () => {
     reset();
   };
 
-  console.log(open);
-
   const handleManageInventory = () => {
     navigate(`/manage-inventory`);
+  };
+
+  const handleInventoryUpdate = () => {
+    navigate(`/update-inventory/${inventory._id}`);
   };
 
   if (loadData) {
@@ -115,6 +115,9 @@ const InventoryItemDetails = () => {
             <div className="owner-details-btn">
               <button onClick={handleManageInventory} className="btn btn-sm">
                 Manage Inventories
+              </button>
+              <button onClick={handleInventoryUpdate} className="btn btn-sm">
+                Update Inventory
               </button>
             </div>
           </div>
