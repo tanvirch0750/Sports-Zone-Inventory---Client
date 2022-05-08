@@ -93,6 +93,7 @@ const InventoryItemDetails = () => {
             <h4>Email: {user.email}</h4>
             <h4>Outlet: {inventory.outlet}</h4>
             <h4>Warehouse: {inventory.warehouse}</h4>
+            <h4>Product Id: {inventory._id}</h4>
           </div>
           <div className="owner-details-btn">
             <button onClick={handleManageInventory} className="btn btn-sm">
