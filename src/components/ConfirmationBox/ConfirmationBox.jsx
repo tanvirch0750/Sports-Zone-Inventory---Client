@@ -1,10 +1,13 @@
 import React from "react";
 import "./ConfirmationBox.css";
 
-const ConfirmationBox = ({ setOpen, setProceed }) => {
+const ConfirmationBox = ({ setOpen, deleteFunctiolaity }) => {
+  const handleCancel = () => {
+    setOpen(false);
+  };
   const handleOkay = () => {
     setOpen(false);
-    setProceed(true);
+    deleteFunctiolaity();
   };
   return (
     <div className="cb-background">
@@ -16,7 +19,7 @@ const ConfirmationBox = ({ setOpen, setProceed }) => {
           <h3>Are you sure you want to delete this item?</h3>
         </div>
         <div className="cb-footer">
-          <button className="btn btn-sm" onClick={() => setOpen(false)}>
+          <button className="btn btn-sm" onClick={handleCancel}>
             Cancel
           </button>
           <button className="btn btn-sm" onClick={handleOkay}>
