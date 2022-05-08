@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useNavigate } from "react-router-dom";
 import axiosPrivate from "../../api/axiosPrivate";
+import ConfirmationBox from "../../components/ConfirmationBox/ConfirmationBox";
 import InventoryItem from "../../components/InventoryItem/InventoryItem";
 import Loading from "../../components/Loading/Loading";
 import auth from "../../Firebase/Firebase.init";
@@ -11,6 +12,8 @@ import "./MyItems.css";
 const MyItems = () => {
   const [inventory, setInventory] = useState([]);
   const [loadData, setLoadData] = useState(false);
+  const [open, setOpen] = useState(false);
+  const [deleteId, setDeleteId] = useState("");
   const [user] = useAuthState(auth);
   const naviagate = useNavigate();
 
@@ -34,20 +37,21 @@ const MyItems = () => {
     getInventory();
   }, [user]);
 
-  const handleDelete = (id) => {
-    const proceed = window.confirm("Are you sure?");
-    if (proceed) {
-      const url = `https://sheltered-dusk-40415.herokuapp.com/inventory/${id}`;
+  const deleteFunction = () => {
+    const url = `https://sheltered-dusk-40415.herokuapp.com/inventory/${deleteId}`;
+    fetch(url, {
+      method: "DELETE",
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        const remainning = inventory.filter((inv) => inv._id !== deleteId);
+        setInventory(remainning);
+      });
+  };
 
-      fetch(url, {
-        method: "DELETE",
-      })
-        .then((res) => res.json())
-        .then((data) => {
-          const remainning = inventory.filter((inv) => inv._id !== id);
-          setInventory(remainning);
-        });
-    }
+  const handleDelete = (id) => {
+    setOpen(true);
+    setDeleteId(id);
   };
 
   if (loadData) {
@@ -55,22 +59,27 @@ const MyItems = () => {
   }
 
   return (
-    <section className="my-items">
-      <div className="my-items-inner">
-        <div className="heading">
-          <h2>My Inventories</h2>
+    <>
+      {open && (
+        <ConfirmationBox setOpen={setOpen} deleteFunction={deleteFunction} />
+      )}
+      <section className="my-items">
+        <div className="my-items-inner">
+          <div className="heading">
+            <h2>My Inventories</h2>
+          </div>
+          <div className="my-inventory-items">
+            {inventory.map((item) => (
+              <InventoryItem
+                key={item._id}
+                item={item}
+                handleDelete={handleDelete}
+              />
+            ))}
+          </div>
         </div>
-        <div className="my-inventory-items">
-          {inventory.map((item) => (
-            <InventoryItem
-              key={item._id}
-              item={item}
-              handleDelete={handleDelete}
-            />
-          ))}
-        </div>
-      </div>
-    </section>
+      </section>
+    </>
   );
 };
 

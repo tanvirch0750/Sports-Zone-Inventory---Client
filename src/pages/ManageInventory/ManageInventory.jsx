@@ -8,10 +8,9 @@ import "./ManageInventory.css";
 const ManageInventory = () => {
   const [inventory, loadData, setInventory] = useInventory();
   const [open, setOpen] = useState(false);
-  const [proceed, setProceed] = useState(false);
   const [deleteId, setDeleteId] = useState("");
 
-  const deleteFunctiolaity = () => {
+  const deleteFunction = () => {
     const url = `https://sheltered-dusk-40415.herokuapp.com/inventory/${deleteId}`;
     fetch(url, {
       method: "DELETE",
@@ -26,20 +25,6 @@ const ManageInventory = () => {
   const handleDelete = (id) => {
     setOpen(true);
     setDeleteId(id);
-
-    // if (proceed) {
-
-    //   const url = `https://sheltered-dusk-40415.herokuapp.com/inventory/${id}`;
-
-    //   fetch(url, {
-    //     method: "DELETE",
-    //   })
-    //     .then((res) => res.json())
-    //     .then((data) => {
-    //       const remainning = inventory.filter((inv) => inv._id !== id);
-    //       setInventory(remainning);
-    //     });
-    // }
   };
 
   const navigate = useNavigate();
@@ -51,10 +36,7 @@ const ManageInventory = () => {
   return (
     <>
       {open && (
-        <ConfirmationBox
-          setOpen={setOpen}
-          deleteFunctiolaity={deleteFunctiolaity}
-        />
+        <ConfirmationBox setOpen={setOpen} deleteFunction={deleteFunction} />
       )}
       <section className="manage-inventory">
         <div className="manage-inventory-inner container">

@@ -1,13 +1,13 @@
 import React from "react";
 import "./ConfirmationBox.css";
 
-const ConfirmationBox = ({ setOpen, deleteFunctiolaity }) => {
+const ConfirmationBox = ({ setOpen, deleteFunction }) => {
   const handleCancel = () => {
     setOpen(false);
   };
   const handleOkay = () => {
     setOpen(false);
-    deleteFunctiolaity();
+    deleteFunction();
   };
   return (
     <div className="cb-background">

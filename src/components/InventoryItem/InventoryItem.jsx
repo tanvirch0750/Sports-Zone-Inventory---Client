@@ -4,6 +4,7 @@ import {
   IoCubeOutline,
   IoEnterOutline,
   IoHomeOutline,
+  IoMailOutline,
   IoPricetagOutline,
 } from "react-icons/io5";
 import { useLocation, useNavigate } from "react-router-dom";
@@ -43,7 +44,7 @@ const InventoryItem = ({ item, handleDelete }) => {
         <h3>{name}</h3>
         {pathname === "/my-items" && (
           <div className="inventory-store-name">
-            <IoHomeOutline className="inventory-icon" />
+            <IoMailOutline className="inventory-icon" />
             <span>Email: {email}</span>
           </div>
         )}
