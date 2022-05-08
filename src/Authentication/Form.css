@@ -30,6 +30,10 @@
   margin-top: 1.2rem;
 }
 
+.form-control input::placeholder {
+  color: var(--color-slate-light);
+}
+
 .form-control label {
   font-size: 1.6rem;
   color: var(--color-slate-light);

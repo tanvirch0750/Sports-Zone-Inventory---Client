@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import ConfirmationBox from "../../components/ConfirmationBox/ConfirmationBox";
+import Loading from "../../components/Loading/Loading";
 import "./AddItem.css";
 
 const AddItem = () => {
@@ -12,10 +13,11 @@ const AddItem = () => {
     formState: { errors },
   } = useForm({});
   const [open, setOpen] = useState(false);
+  const [loadData, setLoadData] = useState(false);
 
   const onSubmit = (data) => {
     let newData = { ...data, quantity: +data.quantity, price: +data.price };
-
+    setLoadData(true);
     fetch("https://sheltered-dusk-40415.herokuapp.com/inventory", {
       method: "POST",
       headers: {
@@ -25,10 +27,15 @@ const AddItem = () => {
     })
       .then((res) => res.json())
       .then((res) => {
+        setLoadData(false);
         setOpen(true);
         reset();
       });
   };
+
+  if (loadData) {
+    return <Loading loadData={loadData} />;
+  }
 
   return (
     <>
@@ -66,6 +73,9 @@ const AddItem = () => {
                       required: "Please select a outlet",
                     })}
                   >
+                    <option value="" disabled selected hidden>
+                      Select our outlet
+                    </option>
                     <option value="Chicago">Chicago</option>
                     <option value="Arizona">Arizona</option>
                     <option value="Florida">Florida</option>
@@ -135,6 +145,9 @@ const AddItem = () => {
                       required: "Please select a warehouse",
                     })}
                   >
+                    <option value="" disabled selected hidden>
+                      Select Warehouse
+                    </option>
                     <option value="Chicago Inventory">Chicago Inventory</option>
                     <option value="Arizona Inventory">Arizona Inventory</option>
                     <option value="Florida Inventory">Florida Inventory</option>
