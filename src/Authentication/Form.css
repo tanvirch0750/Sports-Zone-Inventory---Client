@@ -15,12 +15,6 @@
   display: none;
 }
 
-/* .signup form {
-   display: grid;
-   grid-template-columns: 1fr 1fr;
-   grid-gap: 2.4rem;
- } */
-
 .form-control {
   margin-bottom: 2.6rem;
 }

@@ -3,9 +3,36 @@
   padding-bottom: 3.2rem;
 }
 
+.add-item .form-container {
+  max-width: 90rem;
+}
+
+.add-item .form-container form .form-container-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 3.2rem;
+  grid-row-gap: 0;
+}
+
+.add-item .form-container form .form-btn {
+  margin-top: 2.4rem;
+}
+
+.add-item .form-container form .form-control {
+  margin-bottom: 0;
+}
+
 @media only screen and (max-width: 900px) {
   .add-item {
     padding: 4.8rem 0;
     padding-bottom: 2.4rem;
+  }
+}
+
+@media only screen and (max-width: 900px) {
+  .add-item .form-container form .form-container-inner {
+    grid-template-columns: 1fr;
+    grid-gap: 3.2rem;
+    grid-row-gap: 0;
   }
 }
