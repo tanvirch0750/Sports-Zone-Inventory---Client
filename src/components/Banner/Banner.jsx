@@ -1,8 +1,14 @@
 import React from "react";
 import { IoCheckmarkOutline } from "react-icons/io5";
+import { useNavigate } from "react-router-dom";
 import "./Banner.css";
 
 const Banner = () => {
+  const navigate = useNavigate();
+
+  const handleManageInventory = () => {
+    navigate(`/manage-inventory`);
+  };
   return (
     <section className="banner">
       <div className="banner-inner container">
@@ -12,7 +18,9 @@ const Banner = () => {
             Sports equipments inventory management
             <br /> for <span>Sports Zone</span>.
           </h1>
-          <button className="btn btn-lg">Manage Inventory</button>
+          <button className="btn btn-lg" onClick={handleManageInventory}>
+            Manage Inventory
+          </button>
         </div>
         <div className="inner-content-right">
           <div>
