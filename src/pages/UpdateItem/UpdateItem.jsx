@@ -98,7 +98,7 @@ const UpdateItem = () => {
                       required: "Please select a outlet",
                     })}
                   >
-                    <option value="" disabled selected hidden>
+                    <option disabled selected hidden>
                       Select our outlet
                     </option>
                     <option value="Chicago">Chicago</option>
@@ -170,7 +170,7 @@ const UpdateItem = () => {
                       required: "Please select a warehouse",
                     })}
                   >
-                    <option value="" disabled selected hidden>
+                    <option disabled selected hidden>
                       Select Warehouse
                     </option>
                     <option value="Chicago Inventory">Chicago Inventory</option>

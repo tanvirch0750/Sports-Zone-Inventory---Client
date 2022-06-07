@@ -2,6 +2,16 @@
   padding: 4.8rem 0;
 }
 
+.manage-inventory-inner {
+  max-width: 140rem;
+  margin: 0 auto;
+  padding: 0 3.2rem;
+}
+
+.status {
+  color: var(--color-secondary);
+}
+
 .table-header {
   display: flex;
   justify-content: space-between;
@@ -56,6 +66,10 @@
 @media (max-width: 768px) {
   .manage-inventory {
     padding-bottom: 0;
+  }
+
+  .manage-inventory-inner {
+    padding: 0 1.2rem;
   }
 
   .table-section table thead {

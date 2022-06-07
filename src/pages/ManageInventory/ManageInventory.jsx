@@ -46,7 +46,7 @@ const ManageInventory = () => {
         />
       )}
       <section className="manage-inventory">
-        <div className="manage-inventory-inner container">
+        <div className="manage-inventory-inner">
           <div className="table-header">
             <h3>Manage Inventories</h3>
             <button onClick={() => navigate("/add-item")} className="btn">
@@ -63,6 +63,7 @@ const ManageInventory = () => {
                   <th>Price</th>
                   <th>Quantity</th>
                   <th>Warehouse</th>
+                  <th>Status</th>
                   <th>Action</th>
                 </tr>
               </thead>
@@ -75,6 +76,9 @@ const ManageInventory = () => {
                     <td data-lebel="Price">{item.price}</td>
                     <td data-lebel="Quantity">{item.quantity}</td>
                     <td data-lebel="Warehouse">{item.warehouse}</td>
+                    <td data-lebel="Status" className="status">
+                      {item.quantity > 0 ? "Available" : "Sold Out"}
+                    </td>
                     <td data-lebel="Delete">
                       <button
                         onClick={() => handleDelete(item._id)}

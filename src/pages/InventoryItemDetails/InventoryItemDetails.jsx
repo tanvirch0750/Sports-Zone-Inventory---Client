@@ -38,7 +38,6 @@ const InventoryItemDetails = () => {
 
   const handleDelevered = () => {
     setLoadData(true);
-    setDisabled(true);
     if (inventory.quantity >= 1) {
       fetch(
         `https://sheltered-dusk-40415.herokuapp.com/inventory/delivered/${id}`,
@@ -61,7 +60,7 @@ const InventoryItemDetails = () => {
 
     if (inventory.quantity <= 0) {
       setOpen(true);
-      setDisabled(false);
+      setDisabled(true);
     }
   };
 
@@ -154,7 +153,7 @@ const InventoryItemDetails = () => {
             <div className="stock-out">
               <p>Stock Out:</p>
               <button
-                disabled={disabled}
+                disabled={inventory.quantity <= 0 ? true : false}
                 onClick={handleDelevered}
                 className="btn"
               >
